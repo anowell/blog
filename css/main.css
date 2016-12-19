@@ -57,7 +57,7 @@ code {
 
 .col {
     flex: 1;
-    width: 0px;
+    width: 0;
     margin-right: 5px;
 }
 
@@ -125,7 +125,7 @@ code {
 }
 
 .post img {
-    height: 100%;
+    width: 100%;
 }
 
 /* Focused Style */

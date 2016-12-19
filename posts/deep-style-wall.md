@@ -91,9 +91,9 @@ end
 A half hour later and I have 444 generated images including several gems:
 
 <div class="grid">
-    <img class="col" src="/images/deep-style-wall/train_ride-colorful_dream.jpg">
-    <img class="col" src="/images/deep-style-wall/painting_walk-post_modern.jpg">
-    <img class="col" src="/images/deep-style-wall/buzz-crunch_paper.jpg">
+    <div class="col"><img src="/images/deep-style-wall/train_ride-colorful_dream.jpg"></div>
+    <div class="col"><img src="/images/deep-style-wall/painting_walk-post_modern.jpg"></div>
+    <div class="col"><img src="/images/deep-style-wall/buzz-crunch_paper.jpg"></div>
 </div>
 
 ### Step 3: Rinse and Repeat
