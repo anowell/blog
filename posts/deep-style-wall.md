@@ -36,7 +36,7 @@ So I decided to rewind and write a new script that:
 1. Randomly pick 5 filters for each image while still evenly distributing filters across all images
 2. Batch multiple images into a single request (per-filter)
 
-This was a little beyond the scope of a simple bash script (and too much of a one-off hack to merit writing in Rust), so I rekindled my love of ruby. A simple version of the random filter selection looks like this:
+This was a little beyond the scope of a simple bash script (and too much of a one-off hack to justify writing in Rust), so I rekindled my love of ruby. A simple version of the random filter selection looks like this:
 
 ```ruby
 PER_IMAGE = 4
@@ -52,7 +52,7 @@ all_paths.shuffle.each do |p|
 end
 ```
 
-This creates a `HashMap` that maps each filter to a set of image paths (random pairings) while ensuring that each filter is used approximately the same number of times overall. I added a quick snippet to pre-upload all my images to the Algorithmia Data API:
+This creates a `Hash` that maps each filter to a set of image paths (random pairings) while ensuring that each filter is used approximately the same number of times overall. I added a quick snippet to pre-upload all my images to the Algorithmia Data API:
 
 ```ruby
 data_dir = client.dir("data://.my/test")
@@ -98,15 +98,15 @@ A half hour later and I have 444 generated images including several gems:
 
 ### Step 3: Rinse and Repeat
 
-I quickly browsed the generated images, and selected my favorite of the 4 generated variants of each photo. For the cases where I didn't like any of the 4 choices, I took the original and set it aside for repeating the process. I selected about 70 generated images from the first batch, so I had about 40 images that I wanted to try on a few more filters. I bump the `PER_IMAGE` number to 10, added a bit more logic to avoid repeating image-filter pairings, and removed a few filters that clearly didn't appeal to me. The next run of the script with 40 photos generated another 400 images. I manage to pick out another 25 photos, and then accepted the remaining images aren't well-suited to any of the filters*.
+I quickly browsed the generated images, and selected my favorite of the 4 generated variants of each photo. For the cases where I didn't like any of the 4 choices, I took the original and set it aside for repeating the process. I selected about 70 generated images from the first batch, so I had about 40 images that I wanted to try on a few more filters. I bumped the `PER_IMAGE` number to 10, added more logic to avoid repeating image-filter pairings, and removed a few filters that never appealed to me. The next run of the script with 40 photos generated another 400 images. I manage to pick out another 25 photos, and then accepted the remaining images aren't well-suited to any of the filters*.
 
 The full script used during this process is available [here](https://gist.github.com/anowell/fd8cd6706b6c16080f09e67765e6915d).
 
 &ast; *I actually repeated this process one more time using all filters on the final 15 images, but I only kept 2 of the images from that batch, so it seems that subsequent iterations have diminishing returns.*
 
-### Wrapping up
+### Step 4: Print
 
-I did a final round of curating the generated images and decided on 70 images for printing. A couple images earned 8x10 treatment, and I decided to experiment with printing 2 of the images on canvas. In the end, I spent about $2 in Algorithmia credits, $9 in prints at Sam's Club, and $30 for a pair of 8x10 canvas prints at a local print shop.
+I did a final round of curating the generated images and decided on 70 images for printing. A couple images earned 8x10 treatment, and I decided to experiment with printing 2 of the images on canvas. In the end, I spent about $2 in Algorithmia credits, $9 in prints at Sam's Club, and $30 for a pair of 8x10 framed canvas prints at a local print shop.
 
 And now 23 filters are represented on my Deep Style Wall.
 
