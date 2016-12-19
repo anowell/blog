@@ -7,7 +7,7 @@ cover: /images/covers/trail_walk-post_modern.jpg
 
 Nearly a year ago, my wife covered a wall in photos of our family. When she went to rotate the photos, I claimed the old collection for my office at home - a much needed improvement.
 
-A few weeks ago, my colleagues at Algorithmia cranked out a pretty sweet [Deep Style Demo](http://demos.algorithmia.com/deep-style/) based on the [DeepFilter algorithm](https://algorithmia.com/algorithms/deeplearning/DeepFilter). Immediately I hacked together a quick bash script to generate all 37 Deep Style variants of a single image. The full script is [here](https://gist.github.com/anowell/386035fede097e4aa505102481f00517), but at its core, it just loops through the filters and calls out to the `algo` CLI tool.
+A few weeks ago, my colleagues at Algorithmia cranked out a pretty sweet [Deep Style Demo](http://demos.algorithmia.com/deep-style/) based on the [DeepFilter algorithm](https://algorithmia.com/algorithms/deeplearning/DeepFilter) (hat tip to [@BesirKurtulmus](https://twitter.com/BesirKurtulmus)). Immediately I hacked together a quick bash script to generate all 37 Deep Style variants of a single image. The full script is [here](https://gist.github.com/anowell/386035fede097e4aa505102481f00517), but at its core, it just loops through the filters and calls out to the `algo` CLI tool.
 
 ```bash
 # Now loop through filters
