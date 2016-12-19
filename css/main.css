@@ -1,0 +1,137 @@
+/* Base CSS */
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    width: auto;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    margin-bottom: 60px;
+    background-color: #fcfcfc;
+}
+
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: #333;
+}
+
+h3, h4, h5, h6 {
+    color: #777;
+    font-weight: 500;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #bbb;
+    margin: 30px 0;
+    padding: 0;
+}
+
+a, a:visited, a:link {
+    text-decoration: none;
+    color: #347ec2
+}
+
+a:hover, a:active {
+    color: #005db1;
+}
+
+code {
+    font-size: 16px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+/* Basic Grid */
+
+.grid {
+  display: flex;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.col {
+  flex: 1;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    display: block;
+  }
+  .col {
+    width: 100%;
+  }
+}
+
+/* Site Layout */
+.container {
+    margin: auto;
+    max-width: 960px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.frontpage {
+    margin: auto;
+    max-width: 480px;
+    text-align: center;
+}
+
+.frontpage img {
+    margin-top: 40px;
+}
+
+
+
+.top-nav {
+    font-size: 32px;
+}
+
+.top-nav {
+    margin: auto;
+    max-width: 960px;
+    padding: 5px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+@media (min-width: 1224px) {
+    .top-nav {
+        margin-left: 40px;
+        margin-top: 35px;
+        position: absolute;
+    }
+}
+
+/* Shared Style */
+
+.cover {
+    height: 260px;
+    width: 100%;
+}
+
+.post img {
+    width: 100%;
+}
+
+/* Focused Style */
+
+.frontpage .about-me {
+    color: #bbb;
+}
+
+.frontpage .social-nav {
+    font-size: 20px;
+}
+
+nav {
+    font-family: 'Open Sans', sans-serif;
+}

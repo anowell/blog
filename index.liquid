@@ -1,0 +1,38 @@
+extends: default.liquid
+---
+<div class="frontpage">
+  <img src="/images/profile.jpg" style="width: 200px; border-radius: 50%; border: 1px solid #777;">
+  <h2>Anthony Nowell</h2>
+  <h3>Build stuff. Care for people.</h3>
+  <p class="about-me">
+    Senior Software Engineer @Algorithmia.
+    In Mexico. Always building something.
+    Obsessed with Rust, Arch Linux, and OSS.
+    Previously @Socrata and @Microsoft.
+  </p>
+
+
+  <nav class="social-nav">
+    <a href="https://twitter.com/atnowell"><i class="fa fa-twitter"></i></a>
+    <a href="https://github.com/anowell"><i class="fa fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/anthonynowell"><i class="fa fa-linkedin"></i></a>
+    <a href="mailto:anowell@gmail.com"><i class="fa fa-envelope-o"></i></a>
+  </nav>
+
+  <br>
+  <nav class="extra-nav">
+    <a href="http://portfolio.anowell.com">Portfolio</a>
+  </nav>
+
+  <hr>
+
+  <div>
+    <nav class="post-nav">
+      {% for post in posts %}
+        <div>
+          <h4><a href="{{post.path}}">{{ post.title }}</a></h4>
+        </div>
+      {% endfor %}
+    </nav>
+  </div>
+</div>
