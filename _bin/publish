@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cobalt clean
+cobalt build -im "Updating site to $(git rev-parse --short=8 HEAD)"
+git push origin gh-pages
