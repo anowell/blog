@@ -33,7 +33,7 @@ At 37 filters and 111 photos, using my previous script would generate 4,107 imag
 
 So I decided to rewind and write a new script that:
 
-1. Randomly pick 5 filters for each image while still evenly distributing filters across all images
+1. Randomly pick 4 filters for each image while still evenly distributing filters across all images
 2. Batch multiple images into a single request (per-filter)
 
 This was a little beyond the scope of a simple bash script (and too much of a one-off hack to justify writing in Rust), so I rekindled my love of ruby. A simple version of the random filter selection looks like this:
