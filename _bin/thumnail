@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for file in "$@"; do
+  parent=$(dirname $file)
+  filename=${file##*/}
+  name=${filename%.*}
+  ext=${filename##*.}
+
+  echo "Generating thumbnail for ${filename}"
+  ffmpeg -i "$file" -vf scale=480:-1 "${parent}/${name}_thumb.${ext}"
+done
