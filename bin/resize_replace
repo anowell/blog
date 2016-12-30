@@ -1,8 +1,0 @@
-#!/bin/bash
-
-width=$1
-shift
-for file in "$@"; do
-  echo "Resizing ${filename}"
-  ffmpeg -i "$file" -vf scale=$width:-1 "$file"
-done

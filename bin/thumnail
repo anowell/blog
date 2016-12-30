@@ -7,5 +7,5 @@ for file in "$@"; do
   ext=${filename##*.}
 
   echo "Generating thumbnail for ${filename}"
-  ffmpeg -i "$file" -vf scale=480:-1 "${parent}/${name}_thumb.${ext}"
+  convert "$file" -resize 480x "${parent}/${name}_thumb.${ext}"
 done

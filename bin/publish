@@ -2,4 +2,6 @@
 
 cobalt clean
 cobalt build -im "Updating site to $(git rev-parse --short=8 HEAD)"
+echo "Time to push"
 git push -f origin gh-pages:gh-pages
+echo "Completed"

@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Makes 1920x300 cover images
+#
+# make-cover <img> [gravity] [offset]
+#   where gravity is one of: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
+#   and offset is number of vertical pixels to shift before cut
+#   (must prefix with '+' or '-')
+#
+# make-cover some-photo.jpg Center +30
+
+file=$1
+gravity=${2:-center}
+offset=${3:-+0}
+filename=${file##*/}
+echo $offset
+echo "Resizing ${img}"
+convert "$file" -resize 1920x300^ -gravity $gravity \
+  -crop "1920x300+0${offset}" \
+  "images/covers/$filename"
