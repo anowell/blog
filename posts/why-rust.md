@@ -63,7 +63,7 @@ In the past 2 years, I've used Rust to jump between several domains:
 - I'm tinkering with Rust on a Raspberry Pi (blog post coming soon).
 - I've catalogued [the state of ML in Rust](http://arewelearningyet.com/) and hope dive a bit deeper into ML with Rust in 2017.
 
-Before Rust, I'd have picked off a few of those with Ruby or JavaScript and not bothered with the rest while I cringed at scope of starting something from scratch in C.
+Before Rust, I'd have picked off a few of those with Ruby or JavaScript and not bothered with the rest while I cringed at the scope of starting something from scratch in C.
 
 **Rust is my Magic Whistle, and I use it to jump between worlds**. I'm just not using it to jump to Water Land (scripting) until I find a ridiculous looking Frog Suit.
 
