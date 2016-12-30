@@ -2,7 +2,7 @@ extends: default.liquid
 base_url: http://anowell.com
 
 title: Why Rust?
-description: Being a Rust zealot has its reasons.
+description: Qualifying my obsession with Rust.
 date: 2016.12.29
 cover_path: /images/covers/mario-warp.jpg
 image_path: /images/why-rust/mario-whistle.jpg
