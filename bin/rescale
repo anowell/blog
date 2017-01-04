@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Makes an image 960px wide
+#
+# rescale <img> <width>
+#
+# rescale some-photo.jpg 480
+
+file=$1
+width=${2:-960}
+filename=${file##*/}
+
+echo "Resizing ${file} to ${width}px wide"
+convert "$file" -resize ${width}x "$file"
