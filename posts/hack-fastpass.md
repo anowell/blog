@@ -5,7 +5,7 @@ description: The engineering process behind automating Disney FastPass reservati
 published_date: 2018-12-04 20:00:00 -0800
 data:
   cover_path: /images/covers/fastpass.jpg
-  image_path: /images/hack-fastpass/tbd.jpg
+  image_path: /images/hack-fastpass/stitch_thumb.jpg
 ---
 
 After clicking refresh hundreds of times over the course of a few days, my wife asked if I could show her how to write some code to check Disney World's FastPass+ availability. I started hacking on it, and before long, we had secured several FastPasses.
