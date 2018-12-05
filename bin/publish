@@ -1,7 +1,12 @@
 #!/bin/bash
 
 cobalt clean
-cobalt build -im "Updating site to $(git rev-parse --short=8 HEAD)"
+git clone -b gh-pages --depth 1 git@github.com:anowell/blog _site
+cobalt build
+SHA=$(git rev-parse --short=8 HEAD)
+cd _site
+git add .
+git commit -m "Updating site to $SHA"
 echo "Time to push"
 git push -f origin gh-pages:gh-pages
 echo "Completed"
