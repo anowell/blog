@@ -1,7 +1,7 @@
 layout: default.liquid
 
 title: Hacking Disney World FastPass+
-description: Fast
+description: The engineering process behind automating Disney FastPass reservation
 published_date: 2018-12-04 20:00:00 -0800
 data:
   cover_path: /images/covers/fastpass.jpg
