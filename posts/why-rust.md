@@ -1,11 +1,12 @@
-extends: default.liquid
-base_url: http://anowell.com
+layout: default.liquid
 
 title: Why Rust?
 description: Qualifying my obsession with Rust.
-date: 2016.12.29
-cover_path: /images/covers/mario-warp.jpg
-image_path: /images/why-rust/mario-whistle.jpg
+published_date: 2016-12-29 20:00:00 -0800
+
+data:
+  cover_path: /images/covers/mario-warp.jpg
+  image_path: /images/why-rust/mario-whistle.jpg
 ---
 
 *A response to Steve's [Rust is More than Safety](http://words.steveklabnik.com/rust-is-more-than-safety).*

@@ -1,12 +1,12 @@
-extends: default.liquid
-base_url: http://anowell.com
+layout: default.liquid
 
 title: Rustberry Pi Basics
 description: Getting started with Rust on a Raspberry Pi.
-date: 2016.12.19
-cover_path: /images/covers/trail_walk-post_modern.jpg
-image_path: /images/deep-style-wall/painting_walk-post_modern_thumb.jpg
-draft: true
+published_date: 2016-12-19 20:00:00 -0800
+data:
+  cover_path: /images/covers/trail_walk-post_modern.jpg
+  image_path: /images/deep-style-wall/painting_walk-post_modern_thumb.jpg
+is_draft: true
 ---
 
 It's been nearly a decade since I've done any embedded system work, but I've been itching to tinker in that space again. I scored a Raspberry Pi 3b Christmas morning, and quickly thought up a first project, but first I needed to get back to the basics, with Rust of course:

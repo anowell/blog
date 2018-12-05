@@ -1,4 +1,4 @@
-extends: default.liquid
+layout: default.liquid
 ---
 <div class="frontpage">
   <img src="/images/profile.jpg" style="width: 200px; border-radius: 50%; border: 1px solid #777;">
@@ -28,9 +28,9 @@ extends: default.liquid
 
   <div>
     <nav class="post-nav">
-      {% for post in posts %}
+      {% for post in collections.posts.pages %}
         <div>
-          <h4><a href="{{post.path}}">{{ post.title }}</a></h4>
+          <h4><a href="{{post.permalink}}">{{ post.title }}</a></h4>
         </div>
       {% endfor %}
     </nav>

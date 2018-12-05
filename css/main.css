@@ -43,6 +43,11 @@ a:hover, a:active {
     color: #005db1;
 }
 
+pre {
+    padding: 5px 10px;
+    overflow: auto;
+}
+
 code {
     font-size: 16px;
     font-family: 'Source Code Pro', monospace;
@@ -120,7 +125,7 @@ code {
 /* Shared Style */
 
 .cover {
-    height: 260px;
+    height: 300px;
     width: 100%;
 }
 

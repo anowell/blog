@@ -1,11 +1,11 @@
-extends: default.liquid
-base_url: http://anowell.com
+layout: default.liquid
 
 title: Deep Style Wall
 description: How I created a photo wall of deep style art using a DeepFilter API.
-date: 2016.12.19
-cover_path: /images/covers/trail_walk-post_modern.jpg
-image_path: /images/deep-style-wall/painting_walk-post_modern_thumb.jpg
+published_date: 2016-12-19 20:00:00 -0800
+data:
+  cover_path: /images/covers/trail_walk-post_modern.jpg
+  image_path: /images/deep-style-wall/painting_walk-post_modern_thumb.jpg
 ---
 
 Nearly a year ago, my wife covered a wall in photos of our family. When she went to rotate the photos, I claimed the old collection for my office at home - a much needed improvement.

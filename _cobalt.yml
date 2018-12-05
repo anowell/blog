@@ -1,0 +1,11 @@
+source: "."
+destination: "build"
+
+site:
+  title: Anthony Nowell's Blog
+  base_url: http://anowell.com
+ignore:
+  - .git/*
+  - build/*
+  - bin
+  - README.md

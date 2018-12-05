@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="post">
+    <h2>{{ page.title }}</h2>
+    <h6 style="margin-top: -10px;">{{ page.published_date | date: "%F" }}</h6>
+    <p>
+      {{ page.content }}
+    </p>
+
+  </div>
+</div>
+
+<hr>
+
+<div class="container" style="text-align: center;">
+  <p><i>-- by Anthony Nowell --</i></p>
+
+  <p>
+    Let me know what you think, or share it yourself:
+    <a href="https://twitter.com/share?text={{ page.title }} via @atnowell&url={{ site.base_url }}/{{ page.permalink}}" target="_blank"><i class="fa fa-twitter"></i> Tweet @atnowell</a>
+  </p>
+</div>

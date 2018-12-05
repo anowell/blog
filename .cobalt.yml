@@ -1,9 +1,0 @@
-name: Anthony Nowell's Blog
-link: http://anowell.com
-source: "."
-dest: "build"
-ignore:
-  - .git/*
-  - build/*
-  - bin
-  - README.md
