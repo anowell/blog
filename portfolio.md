@@ -25,8 +25,8 @@ _Empowering organizations to extract value from investments in AI, Machine Learn
 **Director of Engineering: Infrastructure & Operations** <date>Oct 2019 - Present</date>
 
 - Responsible for delivery of ML platform to Fortune 100/500 enterprise and government organizations
-- Responsible for Production Engineering of Algorthmia.com including its SOC 2 Compliance process
-- Product owner and/or project manager for enterprise deployment software as the product evolved to support increasing complexity on AWS, Azure, GovCloud, C2S, and on-prem VMWare
+- Responsible for Production Engineering of [algorthmia.com](algorithmia.com) including its SOC 2 compliance process
+- Product owner and project manager for cloud and on-prem enterprise deployment platform
 - Established a center of excellence for the QA discipline
 - Built a devops-oriented Software Engineering team of SREs, Deployment Engineers, and QA Managers
 
@@ -38,9 +38,9 @@ _Empowering organizations to extract value from investments in AI, Machine Learn
 - Worked cross-org to drive a reorg (dissolving my own org, forming the new new Infra & Operations team)
 
 **Senior Software Engineer** <date>Mar 2013 - Jan 2015</date>
-- Designed and implemented many full-stack features to power Algorithmia's ML platform (Scala, VueJS, MySQL, Rust, Docker)
-- Architected a incremental frontend rewrite that allowed forming a frontend-focused team to take UX ownership (VueJS, NodeJS)
-- Built deployment automation to support complex enterprise and government deployments (AWS, GovCloud, Kubernetes)
+- Designed and implemented full-stack features for Algorithmia's ML platform (Scala, JS, MySQL, Rust, Docker)
+- Architected an incremental frontend rewrite that enabled frontend developers to own UX (VueJS, NodeJS, Typescript)
+- Built deployment automation to support complex enterprise and government deployments (AWS, Kubernetes, Ansible)
 
 ---
 
@@ -50,7 +50,8 @@ _Empowering childcare owners to care more about children and less about paperwor
 
 **Co-creator** <date>Jan 2012 - Jan 2019</date>
 
-Designed, implemented, tested, deployed, and maintained a production Rails service to manage government-subsidized daycares in Mexico. Responsible for everything from defining business objectives, designing user experience, implementing the service, and managing its infrastructure.
+- Started small business in Mexico to help government-subsidized daycares in Mexico.
+- Designed, implemented, and maintained a production Rails service
 
 ---
 
@@ -61,10 +62,10 @@ _Empowering governments and their citizens with Open Data._
 **Software Engineer 2 (DevOps)** <date>Mar 2013 - Jan 2015</date>
 
 - Designed and built automation to provision and deploy services to Azure
-- Authored and improved Chef configuration management and the processes for supporting complex distributed systems
+- Led the adoption of Docker for production services
+- Authored Chef configuration management and created processes for maintaining distributed systems
 - Replaced monitoring infrastructure with Sensu
-- Led the adoption of docker for production services
-- Contributed to several other initiatives including: test strategy, perf testing, release process, hardware capacity planning, cloud migration, recruiting and mentoring.
+- Contributed to test strategy, release process, hardware capacity planning, cloud migration, and mentoring
 
 ---
 
