@@ -30,14 +30,14 @@ _Empowering organizations to extract value from investments in AI, Machine Learn
 - Established a center of excellence for the QA discipline
 - Built a devops-oriented Software Engineering team of SREs, Deployment Engineers, and QA Managers
 
-**Director of Customer Engineering** <date>Jan 2015 - June 2018</date>
+**Director of Customer Engineering** <date>June 2018 - Oct 2019</date>
 
 - Built a multi-disciplinary org accounting for nearly one-third the company size going into a [$25M Series B](https://techcrunch.com/2019/05/14/algorithmia-raises-25m-series-b-for-its-ai-automation-platform/)
 - Responsible for customer lifecycle from pre-sales to delivery, education, support, and account growth
 - Led architecture and development of software to support deployment of ML platform to Fortune 100/500 enterprises and government organizations (AWs, Azure, GovCloud, C2S, Kubernetes)
 - Worked cross-org to drive a reorg (dissolving my own org, forming the new new Infra & Operations team)
 
-**Senior Software Engineer** <date>Mar 2013 - Jan 2015</date>
+**Senior Software Engineer** <date>Jan 2015 - Jun 2018</date>
 - Designed and implemented full-stack features for Algorithmia's ML platform (Scala, JS, MySQL, Rust, Docker)
 - Architected an incremental frontend rewrite that enabled frontend developers to own UX (VueJS, NodeJS, Typescript)
 - Built deployment automation to support complex enterprise and government deployments (AWS, Kubernetes, Ansible)
