@@ -1,5 +1,5 @@
 ---
-layout: default.liquid
+layout: post.liquid
 
 title: Why Rust?
 description: Qualifying my obsession with Rust.

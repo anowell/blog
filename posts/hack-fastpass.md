@@ -1,5 +1,5 @@
 ---
-layout: default.liquid
+layout: post.liquid
 
 title: Hacking Disney World FastPass+
 description: The engineering process behind automating Disney FastPass reservation

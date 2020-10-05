@@ -1,5 +1,5 @@
 ---
-layout: default.liquid
+layout: post.liquid
 
 title: Rustberry Pi Basics
 description: Getting started with Rust on a Raspberry Pi.

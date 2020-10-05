@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include 'head.liquid' %}
+  </head>
+  <body>
+    <header class="panel-cover panel-cover-collapsed" >
+      <div class="top-nav">
+        <a href="/"><i class="fa fa-chevron-circle-left"></i></a>
+      </div>
+
+      <div class="bio">
+        {% include 'bio.liquid' %}
+      </div>
+    </header>
+    <div>
+      <div class="container">
+        {{ page.content }}
+      </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    {% include 'hljs.liquid' %}
+    {% include 'analytics.liquid' %}
+  </body>
+</html>

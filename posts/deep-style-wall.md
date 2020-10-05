@@ -1,5 +1,5 @@
 ---
-layout: default.liquid
+layout: post.liquid
 
 title: Deep Style Wall
 description: How I created a photo wall of deep style art using a DeepFilter API.
