@@ -1,4 +1,3 @@
-sudo: false
 before_script:
   - curl -LSfs https://japaric.github.io/trust/install.sh |
     sh -s --
@@ -13,8 +12,7 @@ script:
 
 deploy:
   provider: pages
-  skip_cleanup: true
-  deploy_key: $GH_TOKEN
+  github_token: $GH_TOKEN
   local_dir: _site
   target_branch: gh-pages
   on:
