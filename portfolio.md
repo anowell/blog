@@ -71,10 +71,10 @@ _Empowering governments and their citizens with Open Data._
 ### Microsoft
 
 **Software Development Engineer in Test 2** - System Center Configuration Manager <date>Jun 2011 - Mar 2013</date>
-- Drove software distribution test strategy and security compliance for write-filter aware Windows Embedded devices
+Drove software distribution test strategy and security compliance for embedded devices using write-filters
 
 **Software Developer Engineering in Test** - Windows Storage & File Systems <date>Jan 2009 - Jun 2011</date>
-- Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity 
+Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity 
 
 <div class="ribbon ribbon-green">
 
