@@ -49,7 +49,7 @@ _Empowering childcare owners to care more about children and less about paperwor
 
 **Co-creator** <date>Jan 2012 - Jan 2019</date>
 
-- Started small business in Mexico to help government-subsidized daycares in Mexico.
+- Started small business in Mexico to help government-subsidized daycares.
 - Designed, implemented, and maintained a production Rails service
 
 ---
