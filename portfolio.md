@@ -24,17 +24,16 @@ _Empowering organizations to extract value from investments in AI, Machine Learn
 
 **Director of Engineering: Infrastructure & Operations** <date>Oct 2019 - Present</date>
 
-- Responsible for delivery of ML platform to Fortune 100/500 enterprise and government organizations
+- Responsible for delivery of ML platform to Fortune 500 enterprise and government organizations
 - Responsible for Production Engineering of [algorthmia.com](algorithmia.com) including its SOC 2 compliance process
-- Product owner and project manager for cloud and on-prem enterprise deployment platform
-- Established a center of excellence for the QA discipline
+- Product owner and project manager for kubernetes-based cloud and on-prem enterprise deployment platform
+- Led center of excellence for the QA discipline and Operational Readiness for the engineering organization
 - Built a devops-oriented Software Engineering team of SREs, Deployment Engineers, and QA Managers
 
 **Director of Customer Engineering** <date>June 2018 - Oct 2019</date>
 
-- Built a multi-disciplinary org accounting for nearly one-third the company size going into a [$25M Series B](https://techcrunch.com/2019/05/14/algorithmia-raises-25m-series-b-for-its-ai-automation-platform/)
-- Responsible for customer lifecycle from pre-sales to delivery, education, support, and account growth
-- Led architecture and development of software to support deployment of ML platform to Fortune 100/500 enterprises and government organizations (AWs, Azure, GovCloud, C2S, Kubernetes)
+- Built multi-disciplinary org responsible for customer lifecycle from pre-sales to delivery, education, support, and account growth going into [$25M Series B](https://techcrunch.com/2019/05/14/algorithmia-raises-25m-series-b-for-its-ai-automation-platform/)
+- Led architecture and development of cloud deployment platform for Fortune 500 organizations (AWS, Azure, GovCloud, C2S, Kubernetes)
 - Worked cross-org to drive a reorg (dissolving my own org, forming the new new Infra & Operations team)
 
 **Senior Software Engineer** <date>Jan 2015 - Jun 2018</date>
