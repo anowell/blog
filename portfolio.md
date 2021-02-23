@@ -63,7 +63,8 @@ _Empowering governments and their citizens with Open Data._
 - Designed and built automation to provision and deploy services to Azure
 - Led the adoption of Docker for production services
 - Authored Chef configuration management and created processes for maintaining distributed systems
-- Replaced monitoring infrastructure with Sensu
+- Implemented monitoring infrastructure (Sensu) across physical datacenters and Azure
+- Drove operational requirements for a major rearchitecture: from hardware capacity planning to deployment model across infrastructure 
 - Contributed to test strategy, release process, hardware capacity planning, cloud migration, and mentoring
 
 ---
