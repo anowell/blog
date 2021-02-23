@@ -10,7 +10,7 @@ data:
 
 # Leadership Principles
 
-Learning is the tool that enables <b>adapting to change</b>. Execution is the art of <b>building value</b>. Communication is foundational to both in addition to modeling how we <b>care for people</b>. These principles guide my approach to both technical and organizational leadership.
+Learning is the tool that enables <b>adapting to change</b>. Execution is the art of <b>building value</b>. Communication is foundational to effective leadership and notably to modeling how we <b>care for people</b>. These principles guide my approach to both technical and organizational leadership.
 
 <div class="ribbon ribbon-orange">
 
