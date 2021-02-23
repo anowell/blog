@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        
+      <title>Why Rust?</title>
+    
+    <meta name="author" content="Anthony Nowell">
+    <meta name="description" content="Qualifying my obsession with Rust.">
+    
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="http://anowell.com/posts/why-rust.html">
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="Why Rust?" />
+      <meta property="og:image" content="http://anowell.com/images/why-rust/mario-whistle.jpg" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@atnowell" />
+      <meta name="twitter:title" content="Why Rust?" />
+      <meta name="twitter:description" content="Qualifying my obsession with Rust." />
+      <meta name="twitter:image" content="http://anowell.com/images/why-rust/mario-whistle.jpg" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab|Source+Code+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/railscasts.min.css">
+
+  </head>
+  <body>
+    <div style="position: relative;">
+      <div class="cover no-print" style="background-image: url(/images/covers/mario-warp.jpg); background-position: center;"></div>
+    </div>
+    <div class="top-nav no-print" style="position: relative; float:left; top:28px;">
+      <a href="/"><i class="fa fa-chevron-circle-left"></i></a>
+    </div>
+    <div>
+      <div class="container">
+  <div class="post">
+    <h2>Why Rust?</h2>
+    <h6 style="margin-top: -10px;">2016-12-29</h6>
+    <p>
+      <p><em>A response to Steve's <a href="http://words.steveklabnik.com/rust-is-more-than-safety">Rust is More than Safety</a>.</em></p>
+<p>I'll let you in on a secret: safety is not a <em>primary</em> motivation for my use of Rust. Its absence might deter me from the language, but it's presence doesn't persuade me to be an advocate. Also, while zero-overhead abstractions is very persuasive to me, in practice, I haven't built anything with Rust that actually demanded zero-overhead. So for me, Rust needs to be about more than &quot;fast and safe.&quot;</p>
+<p>And yet, I advocate enough for Rust that my team probably thinks I'm part of a cult. So why?</p>
+<h2>Rust for fearless coding</h2>
+<p>Aaron wrote about <a href="https://blog.rust-lang.org/2015/04/10/Fearless-Concurrency.html">Fearless Concurrency in Rust</a>, and that's a great banner for Rust, but I want to back up and make the higher claim that Rust is for fearless coding and paint a picture of how that's valuable.</p>
+<p>Fearless concurrency is largely achieved with the ownership and borrowing system and its clever use of <code>Send</code> and <code>Sync</code> traits. But there are several other language features that contribute to fearless coding. Lack of null means lack of null pointer exceptions. Exhaustive pattern matching decreases the likelihood of forgetting to handle a variant, even one added in the future. Immutable by default simplifies reasoning about state and decreases the likelihood of unintended mutation. Explicit errror handling makes it harder to forget to handle some error case.</p>
+<p>To pick on a popular type safe compiled language for a bit, I like Scala for its gains over Java, but I've forgotten to catch exceptions from Java libraries until they bubbled up to a global exception handler. I've hit null pointer exceptions. I've encountered data races. And to nitpick, more than once the compiler allowed me to write <code>a == b</code> not realizing the types didn't match and <code>true == Some(true)</code> evaluates to <code>false</code>. The cost to fix these bugs varies, often with how soon they are caught, but what they contribute to is a general notion that <strong>the more lines of code I touch, the more bugs and regressions I'm introducing</strong>. And Scala is actually quite solid on this front compared to many popular languages, yet Rust gives me significantly more confidence that when code compiles, it just works. Decreasing the concern of introducing regressions opens the door for <strong>fearless refactoring</strong> and as a consequence <strong>iterative prototyping</strong>.</p>
+<p>A year ago, I wanted a lightweight service to be the common interface to running functions from several languages on our startup's platform - with the aim of standardizing the interface and believing that running a containerized instance of the JVM for every single running function was too heavy-weight. Admittedly, I prototyped it in Rust because I was looking for excuses to write more Rust, not because I believed Rust was well-suited for prototyping, so my argument is a post-hoc rationalization. I originally figured it would get rewritten in Go (in the name of a lower learning curve), but when the protoype had promising results, the choice was to clean up error handling for production (e.g. hunting down careless use of <code>.unwrap()</code> and refactor accordingly), or ramp up on Go and port it from scratch. Our team decided to ship some Rust. It is a fairly small service, just over 1k LOC, but after addressing 2 early bugs related to <code>unsafe</code> code dealing with linux pipes, it has &quot;just worked&quot;. And if it works, don't touch it, right? Not quite. Six months later, I fearlessly refactored this production service so I could cleanly incorporate it into a test tool. <strong>I just trust the compiler.</strong></p>
+<p><em>But isn't prototyping in Rust going to be slow?</em> Rapid prototyping is an art that requires a degree of language mastery. I could rapidly prototype in Ruby a lot sooner in my Ruby learning curve, but once the borrow checker drilled its concepts into my mind, prototyping in Rust became quite enjoyable. I could probably still prototype in Ruby about twice as fast, but I could probably iterate on a Rust protoype getting it into production in half the time, and the result would be more robust in the face of future maintenance and feature development. And I'm optimistic that mastering deeper corners of Rust (e.g. effective authoring of macros) will make prototyping with Rust even more productive. Speaking of productivity...</p>
+<h2>Rust for productivity</h2>
+<p>I'm thrilled that <a href="https://internals.rust-lang.org/t/roadmap-2017-productivity-learning-curve-and-expressiveness/4097">productivity is a central theme for Rust in 2017</a>. The tagline <strong>safe, fast, productive --- pick three</strong> is my favorite catch phrase for Rust. While I applaud the critical eye toward the learning curve and paper cuts of the language, I already find Rust highly productive.</p>
+<p>For example, I challenged a colleague to spin up a &quot;hello world&quot; project with SBT and Scala. He accepted, and 30 seconds later I posted this snippet:</p>
+<p><img src="/images/why-rust/zero-to-hello.png" alt="Zero-to-Hello-World in 30 seconds" /></p>
+<p>It's a simple example that is equally trivial in most scripting languages, but after a couple minutes tripping over SBT syntax and directory structure, he accepted that maybe zero-to-hello-world isn't Scala's strong suit. Fwiw, cloning <a href="https://github.com/dph01/scala-sbt-template">dph01/scala-sbt-template</a> might be a reasonable solution here.</p>
+<p>Interestingly, this challenge is pretty trivial for C/C++, but the real reason for the challenge was because I wanted to compare a particular edge case of JSON parsing between a few libraries. The basic idea was to spin up a throw-away project that measures JSON decoding. In Rust, <a href="https://gist.github.com/anowell/349b787d47b16297cb55a302fd777faa">this was trivial</a>. In Scala, I played in the SBT REPL for a while to get the numbers, but as a consequence, I no longer have the code for sharing. If I wanted to compare C/C++ libraries, the process of finding, adding, and building a couple JSON dependencies doesn't sound very productive. Rust achieves the productivity of Ruby, Python, and JavaScript for this sort of scenario.</p>
+<p>The Rust ecosystem may be young, but it's full of great productivity wins. Crates.io rivals great package distribution solutions. The built-in testing and benchmarking frameworks are clean, simple, and effective. Tools like <a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a> ensure code consistency, <a href="https://github.com/Manishearth/rust-clippy">clippy</a> catches a few boneheaded things that the compiler overlooks, and rustdoc generates beautiful documentation. Wrap all of that up under a single command, and suddenly <strong>Cargo is one of the most productivity-enhancing tools I've ever worked with</strong>. There's <a href="https://github.com/phildawes/racer">racer</a> which has been a great start to code completion while waiting for <a href="https://github.com/jonathandturner/rls">RLS</a>. There's rustup for managing rust versions and alternate toolchains. And the language itself has gems that promote productivity like iterators that let you work at a near python-esque level, and the <code>?</code> operator lets you push errors around like a boss while macros like <a href="https://crates.io/crates/quick-error">quick-error</a> and <a href="https://crates.io/crates/error-chain">error-chain</a> trim down the boilerplate of good error handling. The list goes on.</p>
+<p>I still look forward to more expressiveness, more productivity around async I/O, better IDE support, better crate discoverability, and especially improvements to the learning curve that make Rust a bit easier to sell to my peers. So bring on 2017, but <strong>make no mistake, I use Rust for productivity today</strong>.</p>
+<h2>Rust for crossing domains</h2>
+<div class="float-right">
+    <img title="Zero-to-Hello-World in 30 seconds" src="/images/why-rust/mario-whistle.jpg">
+</div>
+<p>With all the talk of <a href="https://medium.com/@ag_dubs/fire-flowers-and-marios-marketing-rust-996b3fdbe8f3">Fire Flowers and Fire Mario</a>, I feel Rust is more like my <a href="https://www.mariowiki.com/Warp_Whistle">Magic Whistle</a>. It may sound less badass than a Fire Flower, but jumping between worlds is my modus operandi.</p>
+<p>Five years ago, I concluded I wanted to transition from systems programming (devices) to web development. I started seeing a world of devices that increasingly derived their value from the services that powered them, and I wanted to be on the service side of that. I still miss systems programming, but the more productive I became in web development ecosysystems, the less productive I felt in system domains, so the less I ventured into that space.</p>
+<p>But it's more than just productivity. It's true that different tools are better suited for different tasks, but sometimes one tool is able to effectively decrease your need to reach for others. I don't expect Rust to be the best tool for all domains, but it turns out that <strong>Rust can be quite effective across several domains</strong> that interest me. Rust is undeniably capable in systems domains as evidenced by <a href="https://servo.org/">servo</a>, <a href="https://en.wikipedia.org/wiki/Redox">redox</a>, <a href="http://blog.burntsushi.net/ripgrep/">ripgrep</a>, etc. However, Rust is attracting varied degrees of interest in <a href="http://www.arewewebyet.org/">web development</a>, <a href="http://arewegameyet.com/">gaming</a>, <a href="http://www.rust-embedded.org/">embedded</a>, and <a href="http://www.arewelearningyet.com/">scientific and machine learning</a> domains. As these ecosystems become more mature, I expect some of the most obvious &quot;Why Not Rust?&quot; arguments to fade.</p>
+<p>In the past 2 years, I've used Rust to jump between several domains:</p>
+<ul>
+<li>I've shipped a <a href="https://github.com/algorithmiaio/langpacks">small web service</a></li>
+<li>I've built <a href="https://github.com/algorithmiaio/algorithmia-cli">cross-platform CLI tools</a></li>
+<li>I've experimented with a <a href="https://github.com/anowell/algorithmia-fuse">networked FUSE filesystem</a> (and <a href="https://github.com/anowell/netfuse">framework</a>)</li>
+<li>I'm hacking on <a href="https://github.com/anowell/quasar">a Rust-to-WASM framework</a> (hoping to blog about it soon)</li>
+<li>I'm tinkering with Rust on a Raspberry Pi (blog post coming soon).</li>
+<li>I've catalogued <a href="http://arewelearningyet.com/">the state of ML in Rust</a> and hope dive a bit deeper into ML with Rust in 2017.</li>
+</ul>
+<p>Before Rust, I'd have picked off a few of those with Ruby or JavaScript and not bothered with the rest while I cringed at the scope of starting something from scratch in C.</p>
+<p><strong>Rust is my Magic Whistle, and I use it to jump between worlds</strong>. I'm just not using it to jump to Water Land (scripting) until I find a ridiculous looking Frog Suit.</p>
+
+    </p>
+
+  </div>
+</div>
+
+<hr>
+
+<div class="container" style="text-align: center;">
+  <p><i>-- by Anthony Nowell --</i></p>
+
+  <p>
+    Let me know what you think, or share it yourself:
+    <a href="https://twitter.com/share?text=Why Rust? via @atnowell&url=http://anowell.com/posts/why-rust.html" target="_blank"><i class="fa fa-twitter"></i> Tweet @atnowell</a>
+  </p>
+</div>
+
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-89616131-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
