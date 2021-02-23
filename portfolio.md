@@ -33,7 +33,7 @@ _Empowering organizations to extract value from investments in AI, Machine Learn
 **Director of Customer Engineering** <date>June 2018 - Oct 2019</date>
 
 - Built multi-disciplinary org responsible for customer lifecycle from pre-sales to delivery, education, support, and account growth going into [$25M Series B](https://techcrunch.com/2019/05/14/algorithmia-raises-25m-series-b-for-its-ai-automation-platform/)
-- Led architecture and development of cloud deployment platform for Fortune 500 organizations (AWS, Azure, GovCloud, C2S, Kubernetes)
+- Led architecture and development of cloud deployment platform for Fortune 500 organizations (AWS, Azure, GovCloud, C2S, Kubernetes, Python)
 - Worked cross-org to drive a reorg (dissolving my own org, forming the new new Infra & Operations team)
 
 **Senior Software Engineer** <date>Jan 2015 - Jun 2018</date>
