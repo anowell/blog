@@ -71,8 +71,10 @@ _Empowering governments and their citizens with Open Data._
 ### Microsoft
 
 **Software Development Engineer in Test 2** - System Center Configuration Manager <date>Jun 2011 - Mar 2013</date>
+- Drove software distribution test strategy and security compliance for write-filter aware Windows Embedded devices
 
 **Software Developer Engineering in Test** - Windows Storage & File Systems <date>Jan 2009 - Jun 2011</date>
+- Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity 
 
 <div class="ribbon ribbon-green">
 
@@ -80,14 +82,13 @@ _Empowering governments and their citizens with Open Data._
 
 </div>
 
-**[Are We Learning Yet?](https://arewelearningyet.com)** - Creator and co-maintainer
+**[Are We Learning Yet?](http://arewelearningyet.com)** - Creator and co-maintainer
 
-Catalogging the Rust-based Machine Learning ecosystem
+Cataloging the Rust-based Machine Learning ecosystem
 
 **[Rust OSS Maintainer](https://crates.io/users/anowell?sort=recent-downloads)** - Creator and maintainer
 
 Maintain a variety of OSS Rust crates across multiple domains (CLI user experience, client libraries, OS utilities)
-
 
 
 
@@ -99,6 +100,6 @@ Maintain a variety of OSS Rust crates across multiple domains (CLI user experien
 
 **Iowa State University** - Graduated 2008 - B.S. in Computer Engineering
 
-**Tec de Monterrey** - Semester Abroad 2007 - Spanish and Computer Engineering
+**Tec de Monterrey** - Semester Abroad 2007 - Spanish (fluent) and Computer Engineering
 
 
