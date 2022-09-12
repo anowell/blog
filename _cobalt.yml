@@ -1,6 +1,7 @@
 site:
   title: Anthony Nowell's Blog
   base_url: http://anowell.com
+source: "."
 ignore:
   - .git/*
   - build/*

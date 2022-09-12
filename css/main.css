@@ -225,17 +225,17 @@ date {
 
 
 @media all and (min-width: 1224px) {
-	.container {
-        margin-left: 530px; 
+	.page.container {
+        margin-left: 530px;
         padding-left: 40px;
         padding-right: 40px;
-    } 
+    }
 
     .top-nav {
         position: absolute;
         top: 5px;
         left: 20px;
-        
+
     }
     .panel-cover {
         display: flex;
@@ -246,7 +246,7 @@ date {
         text-align: center;
         height: 100%;
     }
- 
+
 
     .panel-cover-collapsed {
         width: 40%;
@@ -258,7 +258,7 @@ date {
 	.container {
         padding-left: 10px;
         padding-right: 10px;
-    } 
+    }
 
     .panel-cover .bio {
         margin-left: 140px;
@@ -278,7 +278,7 @@ date {
     }
 }
 
-@media print {    
+@media print {
     .no-print, .no-print *
     {
         display: none !important;

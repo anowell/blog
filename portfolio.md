@@ -9,8 +9,10 @@ data:
 
 <div style="font-size: 20px; margin-top: 50px;">
 
-I am a technical leader focused on developing **high performing** teams and **learning organizations** while maintaining strong technical roots in **distributed system architecture** and **production engineering**. I focus on outcomes and driving to achieve them usually via processes aligned with [DevOps principles](https://medium.com/ibm-garage/the-modern-devops-manifesto-f06c82964722) and it's roots in [Systems Thinking](https://opensource.com/article/18/3/how-apply-systems-thinking-devops).
+I am a technical leader focused on developing **high performing** teams and **learning organizations** while maintaining strong technical roots in **distributed system architecture** and **production engineering**. I focus on outcomes and achieving them via processes aligned with [DevOps principles](https://medium.com/ibm-garage/the-modern-devops-manifesto-f06c82964722) and it's roots in [Systems Thinking](https://opensource.com/article/18/3/how-apply-systems-thinking-devops).
 </div>
+
+But for now, I've turned my focus toward a local, hard-to-scale, face-to-face, challenge.
 
 <div class="ribbon ribbon-orange">
 
@@ -18,11 +20,27 @@ I am a technical leader focused on developing **high performing** teams and **le
 
 </div>
 
+### [Crea Makerspace](https://creamakerspace.com)
+_Inspiring and fostering a local community of creators._
+
+**Founder** <date>Aug 2022 - Present</date>
+
+I aspire to provide a world class space for collaborating and creating, for inspiring and incubating, for empowering and elevating.
+I believe that everybody in my neighborhood should have access to the knowledge, tools, and people required to literally make their dreams come true.
+
+### [Wind River](https://windriver.com)
+_Enabling production-grade cloud-native distributed edge infrastructure powering 5G._
+
+**Senior Engineering Manager: Container Infra & DevOps** <date>June 2021 - Aug 2022</date>
+
+- Responsible for kubernetes platform powering the 5G distributed edge (StarlingX & Wind River Cloud Platform)
+- Led the adoption of distributed build and CI architecture to support a 100+ member engineering org
+
 ### [Algorithmia](https://algorithmia.com)
 
 _Empowering organizations to extract value from investments in AI, Machine Learning, and data science._
 
-**Director of Engineering: Infrastructure & Operations** <date>Oct 2019 - Present</date>
+**Director of Engineering: Infrastructure & Operations** <date>Oct 2019 - June 2021</date>
 
 - Responsible for delivery of ML platform to Fortune 500 enterprise and government organizations
 - Responsible for Production Engineering of [algorthmia.com](algorithmia.com) including its SOC 2 compliance process
@@ -64,7 +82,7 @@ _Empowering governments and their citizens with Open Data._
 - Led the adoption of Docker for production services
 - Authored Chef configuration management and created processes for maintaining distributed systems
 - Implemented monitoring infrastructure (Sensu) across physical datacenters and Azure
-- Drove operational requirements for a major rearchitecture: from hardware capacity planning to deployment model across infrastructure 
+- Drove operational requirements for a major rearchitecture: from hardware capacity planning to deployment model across infrastructure
 - Contributed to test strategy, release process, hardware capacity planning, cloud migration, and mentoring
 
 ---
@@ -77,7 +95,7 @@ Drove software distribution test strategy and security compliance for embedded d
 
 **Software Developer Engineering in Test** - Windows Storage & File Systems <date>Jan 2009 - Jun 2011</date>
 
-Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity 
+Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity
 
 <div class="ribbon ribbon-green">
 
