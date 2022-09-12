@@ -43,15 +43,15 @@
       <p>Nearly a year ago, my wife covered a wall in photos of our family. When she went to rotate the photos, I claimed the old collection for my office at home - a much needed improvement.</p>
 <p>A few weeks ago, my colleagues at Algorithmia cranked out a pretty sweet <a href="http://demos.algorithmia.com/deep-style/">Deep Style Demo</a> based on the <a href="https://algorithmia.com/algorithms/deeplearning/DeepFilter">DeepFilter algorithm</a> (hat tip to <a href="https://twitter.com/BesirKurtulmus">@BesirKurtulmus</a>). Immediately I hacked together a quick bash script to generate all 37 Deep Style variants of a single image. The full script is <a href="https://gist.github.com/anowell/386035fede097e4aa505102481f00517">here</a>, but at its core, it just loops through the filters and calls out to the <code>algo</code> CLI tool.</p>
 <pre style="background-color:#2b303b;">
-<span style="background-color:#2b303b;color:#65737e;"># Now loop through filters
-</span><span style="background-color:#2b303b;color:#b48ead;">for</span><span style="background-color:#2b303b;color:#c0c5ce;"> filter </span><span style="background-color:#2b303b;color:#b48ead;">in </span><span style="background-color:#2b303b;color:#c0c5ce;">$</span><span style="background-color:#2b303b;color:#bf616a;">FILTERS</span><span style="background-color:#2b303b;color:#c0c5ce;">; </span><span style="background-color:#2b303b;color:#b48ead;">do
-  </span><span style="background-color:#2b303b;color:#96b5b4;">echo </span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">Rendering with </span><span style="background-color:#2b303b;color:#c0c5ce;">$</span><span style="background-color:#2b303b;color:#bf616a;">filter</span><span style="background-color:#2b303b;color:#a3be8c;"> filter...</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;
-
-  </span><span style="background-color:#2b303b;color:#bf616a;">savePath</span><span style="background-color:#2b303b;color:#c0c5ce;">=&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">data://.my/temp/</span><span style="background-color:#2b303b;color:#c0c5ce;">$</span><span style="background-color:#2b303b;color:#a3be8c;">{</span><span style="background-color:#2b303b;color:#bf616a;">FNAME</span><span style="background-color:#2b303b;color:#c0c5ce;">%</span><span style="background-color:#2b303b;color:#a3be8c;">.</span><span style="background-color:#2b303b;color:#c0c5ce;">*</span><span style="background-color:#2b303b;color:#a3be8c;">}-</span><span style="background-color:#2b303b;color:#c0c5ce;">$</span><span style="background-color:#2b303b;color:#bf616a;">filter</span><span style="background-color:#2b303b;color:#a3be8c;">.jpg</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;
-  </span><span style="background-color:#2b303b;color:#8fa1b3;">algo</span><span style="background-color:#2b303b;color:#c0c5ce;"> run $</span><span style="background-color:#2b303b;color:#bf616a;">PROFILE_ARGS</span><span style="background-color:#2b303b;color:#c0c5ce;"> deeplearning/DeepFilter/0.5.7 \
-    -d &quot;{\&quot;images\&quot;: [\&quot;$IMAGE\&quot;], \&quot;savePaths\&quot;: [\&quot;$savePath\&quot;], \&quot;filterName\&quot;: \&quot;$filter\&quot;}&quot;
-  algo cp $PROFILE_ARGS $savePath .
-done
+<span style="color:#65737e;"># Now loop through filters
+</span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> filter </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">FILTERS</span><span style="color:#c0c5ce;">; </span><span style="color:#b48ead;">do
+</span><span style="color:#c0c5ce;">  </span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Rendering with </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">filter</span><span style="color:#a3be8c;"> filter...</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">savePath</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">data://.my/temp/</span><span style="color:#c0c5ce;">$</span><span style="color:#a3be8c;">{</span><span style="color:#bf616a;">FNAME</span><span style="color:#c0c5ce;">%</span><span style="color:#a3be8c;">.</span><span style="color:#c0c5ce;">*</span><span style="color:#a3be8c;">}-</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">filter</span><span style="color:#a3be8c;">.jpg</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  </span><span style="color:#8fa1b3;">algo</span><span style="color:#c0c5ce;"> run $</span><span style="color:#bf616a;">PROFILE_ARGS</span><span style="color:#c0c5ce;"> deeplearning/DeepFilter/0.5.7 \
+</span><span style="color:#bf616a;">    -d </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">{</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">images</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">: [</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">IMAGE</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">], </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">savePaths</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">: [</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">savePath</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">], </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">filterName</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">: </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">filter</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">}</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  </span><span style="color:#8fa1b3;">algo</span><span style="color:#c0c5ce;"> cp $</span><span style="color:#bf616a;">PROFILE_ARGS </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">savePath</span><span style="color:#c0c5ce;"> .
+</span><span style="color:#b48ead;">done
 </span></pre>
 <p>So while staring at my wall of photos one day, I felt I should take it a step further and have a wall of DeepFilter generated photos. A new project was born!</p>
 <h3>Step 1: Curating</h3>
@@ -65,49 +65,49 @@ done
 </ol>
 <p>This was a little beyond the scope of a simple bash script (and too much of a one-off hack to justify writing in Rust), so I rekindled my love of ruby. A simple version of the random filter selection looks like this:</p>
 <pre style="background-color:#2b303b;">
-<span style="background-color:#2b303b;color:#c0c5ce;">PER_IMAGE = </span><span style="background-color:#2b303b;color:#d08770;">4</span><span style="background-color:#2b303b;color:#c0c5ce;">
-filter_set = []
-filter_paths = {}
-all_paths.shuffle.each </span><span style="background-color:#2b303b;color:#b48ead;">do </span><span style="background-color:#2b303b;color:#c0c5ce;">|</span><span style="background-color:#2b303b;color:#bf616a;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">|
-  </span><span style="background-color:#2b303b;color:#ebcb8b;">PER_IMAGE</span><span style="background-color:#2b303b;color:#c0c5ce;">.times </span><span style="background-color:#2b303b;color:#b48ead;">do</span><span style="background-color:#2b303b;color:#c0c5ce;">
-    filter_set = </span><span style="background-color:#2b303b;color:#ebcb8b;">ALL_FILTERS</span><span style="background-color:#2b303b;color:#c0c5ce;">.shuffle </span><span style="background-color:#2b303b;color:#b48ead;">if</span><span style="background-color:#2b303b;color:#c0c5ce;"> filter_set.empty?
-    f = filter_set.pop
-    filter_paths[f] ||= []
-    filter_paths[f] &lt;&lt; </span><span style="background-color:#2b303b;color:#96b5b4;">p
-  </span><span style="background-color:#2b303b;color:#b48ead;">end
-end
+<span style="color:#c0c5ce;">PER_IMAGE = </span><span style="color:#d08770;">4
+</span><span style="color:#c0c5ce;">filter_set = []
+</span><span style="color:#c0c5ce;">filter_paths = {}
+</span><span style="color:#c0c5ce;">all_paths.shuffle.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
+</span><span style="color:#c0c5ce;">  </span><span style="color:#ebcb8b;">PER_IMAGE</span><span style="color:#c0c5ce;">.times </span><span style="color:#b48ead;">do
+</span><span style="color:#c0c5ce;">    filter_set = </span><span style="color:#ebcb8b;">ALL_FILTERS</span><span style="color:#c0c5ce;">.shuffle </span><span style="color:#b48ead;">if</span><span style="color:#c0c5ce;"> filter_set.empty?
+</span><span style="color:#c0c5ce;">    f = filter_set.pop
+</span><span style="color:#c0c5ce;">    filter_paths[f] ||= []
+</span><span style="color:#c0c5ce;">    filter_paths[f] &lt;&lt; </span><span style="color:#96b5b4;">p
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">end
+</span><span style="color:#b48ead;">end
 </span></pre>
 <p>This creates a <code>Hash</code> that maps each filter to a set of image paths (random pairings) while ensuring that each filter is used approximately the same number of times overall. I added a quick snippet to pre-upload all my images to the Algorithmia Data API:</p>
 <pre style="background-color:#2b303b;">
-<span style="background-color:#2b303b;color:#c0c5ce;">data_dir = client.dir(&quot;</span><span style="background-color:#2b303b;color:#a3be8c;">data://.my/test</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;)
-all_paths.each </span><span style="background-color:#2b303b;color:#b48ead;">do </span><span style="background-color:#2b303b;color:#c0c5ce;">|</span><span style="background-color:#2b303b;color:#bf616a;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">|
-  basename = </span><span style="background-color:#2b303b;color:#ebcb8b;">Pathname</span><span style="background-color:#2b303b;color:#c0c5ce;">.</span><span style="background-color:#2b303b;color:#8fa1b3;">new</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#96b5b4;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">).basename
-  data_file = data_dir.file(basename)
-  data_dir.put_file(</span><span style="background-color:#2b303b;color:#96b5b4;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">)
-</span><span style="background-color:#2b303b;color:#b48ead;">end
+<span style="color:#c0c5ce;">data_dir = client.dir(&quot;</span><span style="color:#a3be8c;">data://.my/test</span><span style="color:#c0c5ce;">&quot;)
+</span><span style="color:#c0c5ce;">all_paths.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
+</span><span style="color:#c0c5ce;">  basename = </span><span style="color:#ebcb8b;">Pathname</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">p</span><span style="color:#c0c5ce;">).basename
+</span><span style="color:#c0c5ce;">  data_file = data_dir.file(basename)
+</span><span style="color:#c0c5ce;">  data_dir.put_file(</span><span style="color:#96b5b4;">p</span><span style="color:#c0c5ce;">)
+</span><span style="color:#b48ead;">end
 </span></pre>
 <p>And now I was ready to generate 444 images with just 37 API requests (12 images per request):</p>
 <pre style="background-color:#2b303b;">
-<span style="background-color:#2b303b;color:#c0c5ce;">filter_paths.each </span><span style="background-color:#2b303b;color:#b48ead;">do </span><span style="background-color:#2b303b;color:#c0c5ce;">|</span><span style="background-color:#2b303b;color:#bf616a;">filter</span><span style="background-color:#2b303b;color:#c0c5ce;">, </span><span style="background-color:#2b303b;color:#bf616a;">paths</span><span style="background-color:#2b303b;color:#c0c5ce;">|
-  src_paths = paths.map </span><span style="background-color:#2b303b;color:#b48ead;">do </span><span style="background-color:#2b303b;color:#c0c5ce;">|</span><span style="background-color:#2b303b;color:#bf616a;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">|
-    basename = </span><span style="background-color:#2b303b;color:#ebcb8b;">Pathname</span><span style="background-color:#2b303b;color:#c0c5ce;">.</span><span style="background-color:#2b303b;color:#8fa1b3;">new</span><span style="background-color:#2b303b;color:#c0c5ce;">(</span><span style="background-color:#2b303b;color:#96b5b4;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">).basename
-    data_dir.file(basename).data_uri
-  </span><span style="background-color:#2b303b;color:#b48ead;">end</span><span style="background-color:#2b303b;color:#c0c5ce;">
-  save_paths = paths.map </span><span style="background-color:#2b303b;color:#b48ead;">do </span><span style="background-color:#2b303b;color:#c0c5ce;">|</span><span style="background-color:#2b303b;color:#bf616a;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">|
-    &quot;</span><span style="background-color:#2b303b;color:#ab7967;">#{</span><span style="background-color:#2b303b;color:#a3be8c;">data_dir_uri</span><span style="background-color:#2b303b;color:#ab7967;">}</span><span style="background-color:#2b303b;color:#a3be8c;">/</span><span style="background-color:#2b303b;color:#ab7967;">#{</span><span style="background-color:#2b303b;color:#a3be8c;">generated_filename(</span><span style="background-color:#2b303b;color:#96b5b4;">p</span><span style="background-color:#2b303b;color:#a3be8c;">, filter)</span><span style="background-color:#2b303b;color:#ab7967;">}</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;
-  </span><span style="background-color:#2b303b;color:#b48ead;">end</span><span style="background-color:#2b303b;color:#c0c5ce;">
-  data = {
-    </span><span style="background-color:#2b303b;color:#a3be8c;">images:</span><span style="background-color:#2b303b;color:#c0c5ce;"> src_paths,
-    </span><span style="background-color:#2b303b;color:#a3be8c;">savePaths:</span><span style="background-color:#2b303b;color:#c0c5ce;"> save_paths,
-    </span><span style="background-color:#2b303b;color:#a3be8c;">filterName:</span><span style="background-color:#2b303b;color:#c0c5ce;"> filter,
-  }
-
-  </span><span style="background-color:#2b303b;color:#96b5b4;">puts </span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;</span><span style="background-color:#2b303b;color:#96b5b4;">\n</span><span style="background-color:#2b303b;color:#a3be8c;">### Rendering </span><span style="background-color:#2b303b;color:#ab7967;">#{</span><span style="background-color:#2b303b;color:#a3be8c;">src_paths.length</span><span style="background-color:#2b303b;color:#ab7967;">}</span><span style="background-color:#2b303b;color:#a3be8c;"> images with </span><span style="background-color:#2b303b;color:#ab7967;">#{</span><span style="background-color:#2b303b;color:#a3be8c;">filter</span><span style="background-color:#2b303b;color:#ab7967;">}</span><span style="background-color:#2b303b;color:#a3be8c;"> filter...</span><span style="background-color:#2b303b;color:#c0c5ce;">&quot;
-  algo = client.algo(&#39;</span><span style="background-color:#2b303b;color:#a3be8c;">deeplearning/DeepFilter/0.5.7</span><span style="background-color:#2b303b;color:#c0c5ce;">&#39;)
-  algo.set_timeout(</span><span style="background-color:#2b303b;color:#d08770;">300</span><span style="background-color:#2b303b;color:#c0c5ce;">)
-  resp = algo.pipe(data)
-  resp.result[&#39;</span><span style="background-color:#2b303b;color:#a3be8c;">savePaths</span><span style="background-color:#2b303b;color:#c0c5ce;">&#39;].each { |</span><span style="background-color:#2b303b;color:#bf616a;">p</span><span style="background-color:#2b303b;color:#c0c5ce;">| </span><span style="background-color:#2b303b;color:#96b5b4;">puts p </span><span style="background-color:#2b303b;color:#c0c5ce;">}
-</span><span style="background-color:#2b303b;color:#b48ead;">end
+<span style="color:#c0c5ce;">filter_paths.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">filter</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">paths</span><span style="color:#c0c5ce;">|
+</span><span style="color:#c0c5ce;">  src_paths = paths.map </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
+</span><span style="color:#c0c5ce;">    basename = </span><span style="color:#ebcb8b;">Pathname</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">p</span><span style="color:#c0c5ce;">).basename
+</span><span style="color:#c0c5ce;">    data_dir.file(basename).data_uri
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">end
+</span><span style="color:#c0c5ce;">  save_paths = paths.map </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
+</span><span style="color:#c0c5ce;">    &quot;</span><span style="color:#ab7967;">#{</span><span style="color:#a3be8c;">data_dir_uri</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;">/</span><span style="color:#ab7967;">#{</span><span style="color:#a3be8c;">generated_filename(</span><span style="color:#96b5b4;">p</span><span style="color:#a3be8c;">, filter)</span><span style="color:#ab7967;">}</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">end
+</span><span style="color:#c0c5ce;">  data = {
+</span><span style="color:#c0c5ce;">    </span><span style="color:#a3be8c;">images:</span><span style="color:#c0c5ce;"> src_paths,
+</span><span style="color:#c0c5ce;">    </span><span style="color:#a3be8c;">savePaths:</span><span style="color:#c0c5ce;"> save_paths,
+</span><span style="color:#c0c5ce;">    </span><span style="color:#a3be8c;">filterName:</span><span style="color:#c0c5ce;"> filter,
+</span><span style="color:#c0c5ce;">  }
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">  </span><span style="color:#96b5b4;">puts </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">### Rendering </span><span style="color:#ab7967;">#{</span><span style="color:#a3be8c;">src_paths.length</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;"> images with </span><span style="color:#ab7967;">#{</span><span style="color:#a3be8c;">filter</span><span style="color:#ab7967;">}</span><span style="color:#a3be8c;"> filter...</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#c0c5ce;">  algo = client.algo(&#39;</span><span style="color:#a3be8c;">deeplearning/DeepFilter/0.5.7</span><span style="color:#c0c5ce;">&#39;)
+</span><span style="color:#c0c5ce;">  algo.set_timeout(</span><span style="color:#d08770;">300</span><span style="color:#c0c5ce;">)
+</span><span style="color:#c0c5ce;">  resp = algo.pipe(data)
+</span><span style="color:#c0c5ce;">  resp.result[&#39;</span><span style="color:#a3be8c;">savePaths</span><span style="color:#c0c5ce;">&#39;].each { |</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">| </span><span style="color:#96b5b4;">puts p </span><span style="color:#c0c5ce;">}
+</span><span style="color:#b48ead;">end
 </span></pre>
 <p>A half hour later and I have 444 generated images including several gems:</p>
 <div class="grid">
