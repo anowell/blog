@@ -1,0 +1,35 @@
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_call:
+
+name: Build
+
+jobs:
+  build:
+    name: Site Generation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install Cobalt
+        run: |
+          curl -LSfs https://raw.githubusercontent.com/crate-ci/gh-install/master/v1/install.sh | \
+            sh -s -- \
+            --git cobalt-org/cobalt.rs \
+            --crate cobalt \
+            --force \
+            --target x86_64-unknown-linux-gnu \
+            --tag v0.17.5
+          echo COBALT_BIN=~/.cargo/bin/cobalt >> $GITHUB_ENV
+
+      - name: Build Site
+        run: ${{ env.COBALT_BIN }} build
+
+      - name: Upload built site archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: site-archive
+          path: _site

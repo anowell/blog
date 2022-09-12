@@ -1,0 +1,28 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    uses: anowell/blog/.github/workflows/build.yml@master
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download built site archive
+        uses: actions/download-artifact@v2
+        with:
+          name: site-archive
+          path: _site
+
+      - name: _site directory exists
+        run: test -d _site && ls -R _site
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
