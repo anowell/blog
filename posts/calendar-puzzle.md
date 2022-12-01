@@ -68,7 +68,7 @@ Each `0` is an empty square, and each `1` is a square where you cannot place any
 
 ## The Pieces
 
-Chess pieces aren't going to work here since a chess piece only ever occupies one square. Each of our shapes fits in a 4x4 grid, so I created a smaller bitmap type (`BitPiece(u16)`) as the data structure for a piece. By convention, I decided I would enforce that every piece is always in the LSB (least significant bits) of the data structure (i.e. the bottom-right when visualized in a 4x4 grid), and then for each shape piece, I hard-coded one possible variation. I chose `0x0313` for the pink `C` or `U` shaped piece:
+Chess pieces aren't going to work here since a chess piece only ever occupies one square. Each of our shapes fits in a 4x4 grid, so I created a smaller bitmap type (`BitPiece(u16)`) as the data structure for a piece. By convention, I decided I would enforce that every piece is always in the LSB (least significant bits) of the data structure (i.e. the bottom-right when visualized in a 4x4 grid). Then for each shape piece, I hard-coded one possible variation. I chose `0x0313` for the pink `C` or `U` shaped piece:
 
 ```
 0 0 0 0    <- 0x0
