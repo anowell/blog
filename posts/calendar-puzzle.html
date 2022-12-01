@@ -82,7 +82,7 @@
 </span></pre>
 <p>Each <code>0</code> is an empty square, and each <code>1</code> is a square where you cannot place anything.</p>
 <h2>The Pieces</h2>
-<p>Chess pieces aren't going to work here since a chess piece only ever occupies one square. Each of our shapes fits in a 4x4 grid, so I created a smaller bitmap type (<code>BitPiece(u16)</code>) as the data structure for a piece. By convention, I decided I would enforce that every piece is always in the LSB (least significant bits) of the data structure (i.e. the bottom-right when visualized in a 4x4 grid), and then for each shape piece, I hard-coded one possible variation. I chose <code>0x0313</code> for the pink <code>C</code> or <code>U</code> shaped piece:</p>
+<p>Chess pieces aren't going to work here since a chess piece only ever occupies one square. Each of our shapes fits in a 4x4 grid, so I created a smaller bitmap type (<code>BitPiece(u16)</code>) as the data structure for a piece. By convention, I decided I would enforce that every piece is always in the LSB (least significant bits) of the data structure (i.e. the bottom-right when visualized in a 4x4 grid). Then for each shape piece, I hard-coded one possible variation. I chose <code>0x0313</code> for the pink <code>C</code> or <code>U</code> shaped piece:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">0 0 0 0    &lt;- 0x0
 </span><span style="color:#c0c5ce;">0 0 1 1    &lt;- 0x3
