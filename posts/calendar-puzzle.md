@@ -168,7 +168,13 @@ But instead of making it faster, I decided I wanted an excuse to experiment with
     <div class="col"><img src="/images/calendar-puzzle/today-is-puzzle.jpg"></div>
 </div>
 
-I intend to laser cut my own version of this puzzle, and I may even experiment with creating variations of the puzzle. But for now, I've obsessed a bit too much over one puzzle.
+I intend to laser cut my own version of this puzzle, and even experiment with creating variations of the puzzle. For example, here is a more difficult variant with different shapes for purple and orange that is still solveable for every day of the year, but some of the days only have 1 solution.
+
+<div style="text-align:center">
+  <img src="/images/calendar-puzzle/today-is-hard-mode.png" style="width:280px;">
+</div>
+
+But for now, I've obsessed a bit too much over one puzzle.
 
 
 <script type="module">
