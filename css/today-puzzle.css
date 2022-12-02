@@ -1,0 +1,62 @@
+#puzzle-container {
+  width: 282px; /* 40px * 7 cols + 2px border */
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+
+#puzzle-control {
+  margin-bottom: 8px;
+}
+
+#puzzle-control input {
+  font-size: 20px;
+}
+
+#puzzle td {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+#puzzle table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.shape-0 {
+  background-color: darkorange;
+}
+
+.shape-1 {
+  background-color: hotpink;
+}
+
+.shape-2 {
+  background-color: crimson;
+}
+
+.shape-3 {
+  background-color: blueviolet;
+}
+
+.shape-4 {
+  background-color: green;
+}
+
+.shape-5 {
+  background-color: teal;
+}
+
+.shape-6 {
+  background-color: darkgreen;
+}
+
+.shape-7 {
+  background-color: yellow;
+}
+
+.shape-unused {
+  background-color: #333;
+}
