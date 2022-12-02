@@ -25,6 +25,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab|Source+Code+Pro" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/railscasts.min.css">
+    
+      <link rel="stylesheet" href="/css/today-puzzle.css">
+    
 
   </head>
   <body>
@@ -50,7 +53,7 @@
 <li>The board is basically a 7x7 grid with a few square inaccessible</li>
 <li>There are 8 unique shapes</li>
 <li>A single orientation of any shape fits into about 20 unique positions on an empty board</li>
-<li>Some shapes have 8 unique orientations (4 rotates and their reflections)</li>
+<li>Some shapes have 8 unique orientations (4 rotations and their reflections)</li>
 </ul>
 <p>Estimating 20 positions per 8 orientations on 8 pieces, I quickly had an approximate upper-bound of (20×8)<sup>8</sup> = 4.3E17 ways to attempt to brute force place all the pieces. That's 430 quadrillion! My intuition was that I needed to get this into the billions if I wanted to solve it quickly on my laptop.</p>
 <p>I noticed some of the shapes have symmetries that cause certain rotations or reflections to be identical. The rectangle only has 2 unique orientations, and 3 other pieces only have 4 unique orientations. That cuts the possible placements in half 5 times, bringing us closer to 1 quadrillian placements.</p>
@@ -92,15 +95,15 @@
 <p>You can see all the pieces defined <a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L3-L10">here</a>.</p>
 <p>There are a few critical bits of functionality needed for our pieces.</p>
 <ul>
-<li><a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L124-L142">Rotate a piece</a> - just rotate the 4x4 grid clockwise</li>
-<li><a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L84-L100">Reflect a piece</a> - just flip the 4x4 grid horizontally</li>
-<li><a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L144-L157">Align a piece</a> - after rotation or reflection, the bits may not be aligned to the LSB, so this is a helper to translate the piece to the LSB.</li>
-<li><a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L159-L168">Create a <code>BitBoard</code> with a <code>BitPiece</code> at a specific coordinate</a> - placing a piece's 4x4 grid onto an 8x8 grid</li>
+<li><a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/piece.rs#L132-L151">Rotate a piece</a> - just rotate the 4x4 grid clockwise</li>
+<li><a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/piece.rs#L112-L131">Reflect a piece</a> - just flip the 4x4 grid horizontally</li>
+<li><a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/piece.rs#L153-L187">Align a piece</a> - after rotation or reflection, the bits may not be aligned to the LSB, so this is a helper to translate the piece to the LSB.</li>
+<li><a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/piece.rs#L189-L199">Create a <code>BitBoard</code> with a <code>BitPiece</code> at a specific coordinate</a> - placing a piece's 4x4 grid onto an 8x8 grid</li>
 </ul>
 <p>Now that the board is represented by one 8x8 bitmap and a piece placement is represented by another 8x8 bitmap, we can use bitwise operators to place pieces on the board:</p>
 <ul>
-<li>Bitwise AND to detect if the piece overlaps any <code>1</code> squares on the board (<a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/main.rs#L48">happens here</a>)</li>
-<li>Bitwise OR to create a new board that combines the original board and the placed piece (<a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/main.rs#L53">happens here</a>)</li>
+<li>Bitwise AND to detect if the piece overlaps any <code>1</code> squares on the board (<a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/main.rs#L44-L45">happens here</a>)</li>
+<li>Bitwise OR to create a new board that combines the original board and the placed piece (<a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/main.rs#L50">happens here</a>)</li>
 </ul>
 <h2>The Algorithm</h2>
 <p>So to solve the puzzle, we simply need to:</p>
@@ -109,7 +112,7 @@
 <li>Set the target month and date squares to <code>1</code></li>
 <li>Place all the pieces without overlapping any squares that already have a <code>1</code></li>
 </ol>
-<p>That last step is where we need an algorithm that will let us perfom every combination of legal piece placements. This is how we end up with millions of placements to evaluate. We use a <a href="https://en.wikipedia.org/wiki/Depth-first_search">depth-first search technique</a>.</p>
+<p>That last step is where we need an algorithm that will let us perfom every combination of legal piece placements. This is how we end up with millions of placements to evaluate. We use a <a href="https://en.wikipedia.org/wiki/Depth-first_search">depth-first search technique</a> (<a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/main.rs#L157-L189">implemented here</a>).</p>
 <ol>
 <li>Create an empty list of boards.</li>
 <li>Then create a board for every possible valid placement of the first piece and add them to the list.</li>
@@ -117,8 +120,27 @@
 <li>Repeat step 3 until the list of boards is empty</li>
 </ol>
 <p>Initially the list will grow very fast, but as the board has more pieces, there will be fewer legal placements.</p>
-<h2>Wrapping Up</h2>
-<p>Every day of the year (including Feb 29) has <a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/first_solutions.txt">a solution</a>, actually <a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/count_solutions.txt">multiple solutions</a>:</p>
+<h2>Visualizing Solutions</h2>
+<p>I wrapped this all up in a little program called <code>today-is</code> which visualizes each of the shapes with a different letter from <code>A-H</code>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ today-is
+</span><span style="color:#c0c5ce;">**** 12-01 ****
+</span><span style="color:#c0c5ce;">E E E E B B X X
+</span><span style="color:#c0c5ce;">E C C C B X X X
+</span><span style="color:#c0c5ce;">X D D C B B G X
+</span><span style="color:#c0c5ce;">A A D C H G G X
+</span><span style="color:#c0c5ce;">A A D D H H G X
+</span><span style="color:#c0c5ce;">A A F F H H G X
+</span><span style="color:#c0c5ce;">F F F X X X X X
+</span><span style="color:#c0c5ce;">X X X X X X X X
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">$ today-is --print count
+</span><span style="color:#c0c5ce;">12-01 has 26 solutions
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">$ today-is --date 12-25 --print count
+</span><span style="color:#c0c5ce;">12-25 has 92 solutions
+</span></pre>
+<p>Every day of the year has <a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/count_solutions.txt">multiple solutions</a>:</p>
 <ul>
 <li>Oct 6 has the fewest unique solutions: 7</li>
 <li>Jan 20 has the most unique solutions: 195</li>
@@ -127,16 +149,134 @@
 <p>The program is reasonably fast. On my laptop (Dell XPS 13 Plus):</p>
 <ul>
 <li>it takes about 1 second to find all the solutions for a given date</li>
-<li>it takes about 10 seconds to find one solution for every day of the year</li>
+<li>it takes about 10 seconds to find <a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/first_solutions.txt">one solution for every day of the year</a></li>
+<li>it takes about 6 minutes to find all solutions for all days of the year</li>
 </ul>
-<p>And yet, it should be possible to make it faster (e.g. concurrency, maybe SIMD, perhaps a better algorithm). Fwiw, almost all the computation time is spent <a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L159-L168">converting 4x4 bitmaps into 8x8 bitmaps</a>.</p>
-<p>I intend to cut my own version of this puzzle. And with this program, I could use it to experimentally determine:</p>
+<p>And it should be possible to make it faster. There are 3 approaches that could make this faster:</p>
 <ul>
-<li>if other piece shapes could be used</li>
-<li>if other board layouts could be used</li>
+<li>Concurrency - the current implementation only uses 1 CPU core.</li>
+<li>Computational optimizations - almost all the computation time is spent <a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/src/piece.rs#L189-L199">converting 4x4 bitmaps into 8x8 bitmaps</a> which is what happens 450 million times. I suspect there may be some SIMD tricks to speed this up.</li>
+<li>Algorithmic improvements - there are likely improvements that would use less brute force and wouldn't have to evaluate 450 million possible placements. <em>I am certain my daughter didn't evaluate 450 million placements to find a solution!</em></li>
 </ul>
-<p>So I may end up with slight variations on this puzzle. But at this point, I've obsessed a bit too much over one puzzle.</p>
+<p>But instead of doing that, I decided I've been looking for an excuse to experiment with WebAssembly which Rust has great support for. So I turned it into an interactive solver (with matching colors):</p>
+<div class="grid">
+    <div class="col">
+      <div id="puzzle-container">
+        <div id="puzzle-control">
+          <input id="prev-day" type="button" value="<">
+          <input id="date-picker" type="date">
+          <input id="next-day" type="button" value=">">
+        </div>
+        <div id="puzzle"></div>
+        <p><small>Note: This solver might not appear or work in older browsers.</small></p>
+      </div>
+    </div>
+    <div class="col"><img src="/images/calendar-puzzle/today-is-puzzle.jpg"></div>
+</div>
+<p>I intend to cut my own version of this puzzle and may even experiment with creating variations of the puzzle. But for now, I've obsessed a bit too much over one puzzle.</p>
+<script type="module">
+  import init, { solve_date, get_piece } from '/js/today_puzzle.js'
 
+  function monthsForLocale(localeName = 'en-US', monthFormat = 'short') {
+    const format = new Intl
+      .DateTimeFormat(localeName, { month: monthFormat }).format
+    return [...Array(12).keys()]
+      .map((m) => format(new Date(Date.UTC(2021, (m + 1) % 12))))
+  }
+  const MONTHS = monthsForLocale()
+
+  function getSquareText(n) {
+    if (n % 8 == 7 || n == 6 || n == 14 || n > 50) { return '' }
+    if (n < 6) { return MONTHS[n] }
+    if (n >= 7 && n < 14) { return MONTHS[n - 2] }
+    if (n < 24) { return n - 15 }
+    if (n < 32) { return n - 16 }
+    if (n < 40) { return n - 17 }
+    if (n < 48) { return n - 18 }
+    if (n <= 50) { return n - 19 }
+    console.log("Unknown square: " + n)
+  }
+
+  function ymd(date) {
+    const offset = date.getTimezoneOffset()
+    date = new Date(date.getTime() - (offset * 60 * 1000))
+    return date.toISOString().split('T')[0]
+  }
+
+  function clearViz() {
+    updateViz(0n)
+  }
+
+  function makeBoard(solution) {
+    let board = new Array(64)
+    for (let i = 0; i < 8; i++) {
+      let piece = get_piece(solution, i)
+      for (let j = 0; j < 64; j++) {
+        if ((piece & (1n << BigInt(j))) !== 0n) {
+          board[j] = i
+        }
+      }
+    }
+    return board
+  }
+
+  function updateViz(board) {
+    let table = '<table>'
+    for (let i = 0; i < 7; i++) {
+      table += '<tr>'
+      for (let j = 0; j < 7; j++) {
+        let text = getSquareText(i * 8 + j)
+        let shape = 'unused'
+        if(text != '') {
+          shape = board[63 - (i * 8 + j)]
+        }
+        table = table + '<td class="shape-' + shape + '">' + text + '</td>'
+      }
+      table += '</tr>'
+    }
+    table += '</table>'
+    document.getElementById("puzzle").innerHTML = table
+  }
+
+  function solve(date) {
+    console.log('Solving for ' + date.toLocaleDateString())
+    return makeBoard(solve_date(date.getMonth() + 1, date.getDate()))
+  }
+
+  async function run() {
+    await init()
+
+    let today = new Date()
+    document.getElementById("date-picker").value = ymd(today)
+
+    let solution = solve(today)
+    updateViz(solution)
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById("date-picker").addEventListener("input", function () {
+      clearViz()
+      const offset = this.valueAsDate.getTimezoneOffset()
+      let newDate = new Date(this.valueAsDate.getTime() + (offset * 60 * 1000))
+      let solution = solve(newDate)
+      updateViz(solution)
+    });
+    document.getElementById("prev-day").addEventListener("click", function () {
+      let picker = document.getElementById("date-picker")
+      clearViz()
+      picker.stepDown()
+      setTimeout(() => picker.dispatchEvent(new Event('input')))
+    });
+    document.getElementById("next-day").addEventListener("click", function () {
+      let picker = document.getElementById("date-picker")
+      clearViz()
+      picker.stepUp()
+      setTimeout(() => picker.dispatchEvent(new Event('input')))
+    });
+  }, false)
+
+  run();
+</script>
     </p>
 
   </div>
