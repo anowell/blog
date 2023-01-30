@@ -168,6 +168,8 @@ But instead of making it faster, I decided I wanted an excuse to experiment with
     <div class="col"><img src="/images/calendar-puzzle/today-is-puzzle.jpg"></div>
 </div>
 
+And then extended it to create [a version that can solve multiple variants of the puzzle](https://anowell.github.io/today-puzzle/).
+
 I intend to laser cut my own version of this puzzle, and even experiment with creating variations of the puzzle. For example, here is a more difficult variant with different shapes for purple and orange that is still solveable for every day of the year, but some of the days only have 1 solution.
 
 <div style="text-align:center">
