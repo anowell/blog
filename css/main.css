@@ -26,7 +26,7 @@ h1, h2 {
 
 h3, h4, h5, h6 {
     color: #777;
-    font-weight: 500;
+    font-weight: 800;
 }
 
 hr {
@@ -221,8 +221,22 @@ nav {
 
 date {
     float: right;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: -1px;
 }
 
+blockquote {
+    font-style: italic;
+    background: #f9f9f9;
+    border-left: 8px solid #ccc;
+    margin: 10px 0px;
+    padding: 10px 10px;
+}
+
+blockquote p {
+    display: inline;
+}
 
 @media all and (min-width: 1224px) {
 	.page.container {
