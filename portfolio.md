@@ -9,7 +9,7 @@ data:
 
 <div style="font-size: 20px; margin-top: 50px;">
 
-I am a technical leader obsessed with **high performing** teams and **learning organizations** with strong technical roots in **distributed system architecture**, **platform engineering**, and **production engineering**. I think a lot about outcomes, [DevOps principles](https://medium.com/ibm-garage/the-modern-devops-manifesto-f06c82964722), and [Systems Thinking](https://opensource.com/article/18/3/how-apply-systems-thinking-devops).
+I am a technical leader obsessed with **high performing** teams and **learning organizations** with strong technical roots in **distributed system architecture**, **platform engineering**, and **product development**. I think a lot about outcomes, [DevOps principles](https://medium.com/ibm-garage/the-modern-devops-manifesto-f06c82964722), and [Systems Thinking](https://opensource.com/article/18/3/how-apply-systems-thinking-devops).
 </div>
 
 <div class="ribbon ribbon-orange">
@@ -27,7 +27,7 @@ I founded a space to foster a local community of makers: 3D printing, robotics, 
 
 ---
 
-### [Wind River](https://windriver.com)
+### [Wind River](https://windriver.com) (acquired by Aptiv)
 > Enabling production-grade cloud-native distributed edge infrastructure powering 5G.
 
 **Senior Engineering Manager: Container Infra & DevOps** <date>June 2021 - Aug 2022</date>
@@ -37,7 +37,7 @@ I founded a space to foster a local community of makers: 3D printing, robotics, 
 
 ---
 
-### [Algorithmia](https://algorithmia.com)
+### [Algorithmia](https://algorithmia.com) (acquired by DataRobot)
 
 > Empowering organizations to extract value from investments in AI, Machine Learning, and data science.
 
@@ -61,17 +61,6 @@ I founded a space to foster a local community of makers: 3D printing, robotics, 
 
 ---
 
-### [Lestanza](https://web.archive.org/web/20180820014451/https://lestanza.com/)
-
-> Empowering childcare owners to care more about children and less about paperwork.
-
-**Co-creator** <date>Jan 2012 - Jan 2019</date>
-
-- Started small business in Mexico to help government-subsidized daycares.
-- Designed, implemented, and maintained a production Rails service
-
----
-
 ### [Socrata](https://web.archive.org/web/20150115093032/http://www.socrata.com/) (acquired by Tyler Technologies)
 
 > Empowering governments and their citizens with Open Data.
@@ -83,6 +72,17 @@ I founded a space to foster a local community of makers: 3D printing, robotics, 
 - Authored Chef configuration management and created processes for maintaining distributed systems
 - Implemented monitoring infrastructure (Sensu) across physical datacenters and Azure
 - Drove operational requirements, hardware capacity planning, and deployment pipeline for a major rearchitecture
+
+---
+
+### [Lestanza](https://web.archive.org/web/20180820014451/https://lestanza.com/)
+
+> Empowering childcare owners to care more about children and less about paperwork.
+
+**Co-creator** <date>Jan 2012 - Jan 2019</date>
+
+- Started small business in Mexico to help government-subsidized daycares.
+- Designed, implemented, and maintained a production Rails service
 
 ---
 
