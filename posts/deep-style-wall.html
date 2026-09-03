@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
         
       <title>Deep Style Wall</title>
@@ -22,29 +22,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="/css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab|Source+Code+Pro" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/railscasts.min.css">
     
 
   </head>
   <body>
-    <div style="position: relative;">
-      <div class="cover no-print" style="background-image: url(/images/covers/trail_walk-post_modern.jpg); background-position: center;"></div>
-    </div>
-    <div class="top-nav no-print" style="position: relative; float:left; top:28px;">
-      <a href="/"><i class="fa fa-chevron-circle-left"></i></a>
-    </div>
-    <div>
-      <div class="container">
-  <div class="post">
-    <h2>Deep Style Wall</h2>
-    <h6 style="margin-top: -10px;">2016-12-19</h6>
-    <p>
-      <p>Nearly a year ago, my wife covered a wall in photos of our family. When she went to rotate the photos, I claimed the old collection for my office at home - a much needed improvement.</p>
+    <div class="shell">
+      
+      <aside class="sidenav">
+  
+  <a class="sidenav-name" href="/"><span>Anthony</span> <span>Nowell</span></a>
+  <div class="rule rule-heavy rule-name"></div>
+
+  <nav class="sidenav-links">
+    <a href="/portfolio">Work</a>
+    <a href="/principles">Principles</a>
+    <a href="/writing" class="active">Writing</a>
+  </nav>
+
+  
+  <div class="sidenav-writing">
+    <div class="label"><span class="slash">//</span> Writing</div>
+    
+    <a href="/posts/calendar-puzzle.html">Calendar Puzzle</a>
+    
+    <a href="/posts/hack-fastpass.html">Hacking Disney World FastPass+</a>
+    
+    <a href="/posts/why-rust.html">Why Rust?</a>
+    
+    <a href="/posts/deep-style-wall.html" class="active">Deep Style Wall</a>
+    
+  </div>
+  
+
+  <div class="sidenav-foot">
+    <div class="rule rule-short"></div>
+    <div class="meta">Seattle, WA</div>
+    <div class="meta">Updated Sep 2026</div>
+    <nav class="social">
+      <a href="https://github.com/anowell" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/anthonynowell" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="https://twitter.com/atnowell" title="Twitter"><i class="fa fa-twitter"></i></a>
+      <a href="mailto:anowell@gmail.com" title="Email"><i class="fa fa-envelope-o"></i></a>
+    </nav>
+  </div>
+</aside>
+
+      <main class="main">
+        <article class="post">
+          <div class="post-banner" style="background-image: url(/images/covers/trail_walk-post_modern.jpg);"></div>
+          <header class="post-header">
+            <div class="post-gutter">
+              <div class="mono post-date">Dec 19<br>2016</div>
+              <div class="rule rule-short"></div>
+            </div>
+            <div class="post-title">
+              <h1>Deep Style Wall</h1>
+              <div class="rule rule-signal"></div>
+              <p class="lede">How I created a photo wall of deep style art using a DeepFilter API.</p>
+            </div>
+          </header>
+          <div class="post-body">
+            <p>Nearly a year ago, my wife covered a wall in photos of our family. When she went to rotate the photos, I claimed the old collection for my office at home - a much needed improvement.</p>
 <p>A few weeks ago, my colleagues at Algorithmia cranked out a pretty sweet <a href="http://demos.algorithmia.com/deep-style/">Deep Style Demo</a> based on the <a href="https://algorithmia.com/algorithms/deeplearning/DeepFilter">DeepFilter algorithm</a> (hat tip to <a href="https://twitter.com/BesirKurtulmus">@BesirKurtulmus</a>). Immediately I hacked together a quick bash script to generate all 37 Deep Style variants of a single image. The full script is <a href="https://gist.github.com/anowell/386035fede097e4aa505102481f00517">here</a>, but at its core, it just loops through the filters and calls out to the <code>algo</code> CLI tool.</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#65737e;"># Now loop through filters
+<code><span style="color:#65737e;"># Now loop through filters
 </span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> filter </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">FILTERS</span><span style="color:#c0c5ce;">; </span><span style="color:#b48ead;">do
 </span><span style="color:#c0c5ce;">  </span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Rendering with </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">filter</span><span style="color:#a3be8c;"> filter...</span><span style="color:#c0c5ce;">&quot;
 </span><span style="color:#c0c5ce;">
@@ -53,7 +98,7 @@
 </span><span style="color:#bf616a;">    -d </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">{</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">images</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">: [</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">IMAGE</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">], </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">savePaths</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">: [</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">savePath</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">], </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">filterName</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">: </span><span style="color:#96b5b4;">\&quot;</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">filter</span><span style="color:#96b5b4;">\&quot;</span><span style="color:#a3be8c;">}</span><span style="color:#c0c5ce;">&quot;
 </span><span style="color:#c0c5ce;">  </span><span style="color:#8fa1b3;">algo</span><span style="color:#c0c5ce;"> cp $</span><span style="color:#bf616a;">PROFILE_ARGS </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">savePath</span><span style="color:#c0c5ce;"> .
 </span><span style="color:#b48ead;">done
-</span></pre>
+</span></code></pre>
 <p>So while staring at my wall of photos one day, I felt I should take it a step further and have a wall of DeepFilter generated photos. A new project was born!</p>
 <h3>Step 1: Curating</h3>
 <p>First I needed photos. Sadly our photos aren't particularly well-organized (I'm still holding out for the holy grail of photo storage solutions), so I had to scour through both my wife's and my Google Drive and One Drive accounts to gather a bunch of photos to use. I don't usually enjoy multi-hour long sessions of flipping through photo albums, so I hastily selected a wide variety images that I thought would be interesting. In the end, I had curated 111 photos for the next phase.</p>
@@ -66,7 +111,7 @@
 </ol>
 <p>This was a little beyond the scope of a simple bash script (and too much of a one-off hack to justify writing in Rust), so I rekindled my love of ruby. A simple version of the random filter selection looks like this:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">PER_IMAGE = </span><span style="color:#d08770;">4
+<code><span style="color:#c0c5ce;">PER_IMAGE = </span><span style="color:#d08770;">4
 </span><span style="color:#c0c5ce;">filter_set = []
 </span><span style="color:#c0c5ce;">filter_paths = {}
 </span><span style="color:#c0c5ce;">all_paths.shuffle.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
@@ -77,19 +122,19 @@
 </span><span style="color:#c0c5ce;">    filter_paths[f] &lt;&lt; </span><span style="color:#96b5b4;">p
 </span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">end
 </span><span style="color:#b48ead;">end
-</span></pre>
+</span></code></pre>
 <p>This creates a <code>Hash</code> that maps each filter to a set of image paths (random pairings) while ensuring that each filter is used approximately the same number of times overall. I added a quick snippet to pre-upload all my images to the Algorithmia Data API:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">data_dir = client.dir(&quot;</span><span style="color:#a3be8c;">data://.my/test</span><span style="color:#c0c5ce;">&quot;)
+<code><span style="color:#c0c5ce;">data_dir = client.dir(&quot;</span><span style="color:#a3be8c;">data://.my/test</span><span style="color:#c0c5ce;">&quot;)
 </span><span style="color:#c0c5ce;">all_paths.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
 </span><span style="color:#c0c5ce;">  basename = </span><span style="color:#ebcb8b;">Pathname</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">p</span><span style="color:#c0c5ce;">).basename
 </span><span style="color:#c0c5ce;">  data_file = data_dir.file(basename)
 </span><span style="color:#c0c5ce;">  data_dir.put_file(</span><span style="color:#96b5b4;">p</span><span style="color:#c0c5ce;">)
 </span><span style="color:#b48ead;">end
-</span></pre>
+</span></code></pre>
 <p>And now I was ready to generate 444 images with just 37 API requests (12 images per request):</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">filter_paths.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">filter</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">paths</span><span style="color:#c0c5ce;">|
+<code><span style="color:#c0c5ce;">filter_paths.each </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">filter</span><span style="color:#c0c5ce;">, </span><span style="color:#bf616a;">paths</span><span style="color:#c0c5ce;">|
 </span><span style="color:#c0c5ce;">  src_paths = paths.map </span><span style="color:#b48ead;">do </span><span style="color:#c0c5ce;">|</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">|
 </span><span style="color:#c0c5ce;">    basename = </span><span style="color:#ebcb8b;">Pathname</span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">new</span><span style="color:#c0c5ce;">(</span><span style="color:#96b5b4;">p</span><span style="color:#c0c5ce;">).basename
 </span><span style="color:#c0c5ce;">    data_dir.file(basename).data_uri
@@ -109,7 +154,7 @@
 </span><span style="color:#c0c5ce;">  resp = algo.pipe(data)
 </span><span style="color:#c0c5ce;">  resp.result[&#39;</span><span style="color:#a3be8c;">savePaths</span><span style="color:#c0c5ce;">&#39;].each { |</span><span style="color:#bf616a;">p</span><span style="color:#c0c5ce;">| </span><span style="color:#96b5b4;">puts p </span><span style="color:#c0c5ce;">}
 </span><span style="color:#b48ead;">end
-</span></pre>
+</span></code></pre>
 <p>A half hour later and I have 444 generated images including several gems:</p>
 <div class="grid">
     <div class="col"><img src="/images/deep-style-wall/train_ride-colorful_dream_thumb.jpg"></div>
@@ -125,28 +170,21 @@
 <p>And now 23 filters are represented on my Deep Style Wall.</p>
 <img src="/images/deep-style-wall/photo-wall.jpg">
 
-    </p>
-
-  </div>
-</div>
-
-<hr>
-
-<div class="container" style="text-align: center;">
-  <p><i>-- by Anthony Nowell --</i></p>
-
-  <p>
-    Let me know what you think, or share it yourself:
-    <a href="https://twitter.com/share?text=Deep Style Wall via @atnowell&url=http://anowell.com/posts/deep-style-wall.html" target="_blank"><i class="fa fa-twitter"></i> Tweet @atnowell</a>
-  </p>
-</div>
-
+          </div>
+          <footer class="post-foot">
+            <div class="rule"></div>
+            <p class="mono">
+              Written by Anthony Nowell
+              <span class="slash">//</span>
+              <a href="https://twitter.com/share?text=Deep Style Wall via @atnowell&url=http://anowell.com/posts/deep-style-wall.html" target="_blank">Share</a>
+              <span class="slash">//</span>
+              <a href="mailto:anowell@gmail.com?subject=Deep Style Wall">Reply</a>
+            </p>
+          </footer>
+        </article>
+      </main>
     </div>
-
-    <script src="/js/main.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
+        <script src="/js/main.js"></script>
     <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -155,6 +193,7 @@
 	ga('create', 'UA-89616131-1', 'auto');
 	ga('send', 'pageview');
 </script>
+
 
   </body>
 </html>
