@@ -1,30 +1,27 @@
 ---
 layout: page.liquid
 
-title: Leadership Principles
-description: foo bar
+title: Principles
+description: Leadership principles that guide how Anthony Nowell approaches technical and organizational leadership.
 data:
-  cover_path: /images/textures/px_by_Gre3g_@2X.png
+  nav: principles
+  page_class: main-principles
 ---
 
 
 # Leadership Principles
 
-Learning is the tool that enables <b>adapting to change</b>. Execution is the art of <b>building value</b>. Communication is foundational to effective leadership and notably to modeling how we <b>care for people</b>. These principles guide my approach to both technical and organizational leadership.
+Learn relentlessly, communicate effectively, execute to win — built on the foundation of trust.
 
-<div class="ribbon ribbon-orange">
-
-## <i class="fa fa-book"></i> Learn
+## Learn
 
 _There is no talent shortage; there is a shortage of learning organizations investing in their people._
-
-</div>
 
 ### Intellectual Curiosity unlocks Intellectual Horsepower
 
 - We are artisans that take pride in and pursue mastery of our craft.
 - Great engineers have an insatiable appetite for learning how and why things work. 
-- First principles matter.
+- **First principles matter.**
 
 ### Expect Failure; Don't Accept It
 
@@ -33,13 +30,9 @@ _There is no talent shortage; there is a shortage of learning organizations inve
 - Post-mortems must be transparent, blameless, and result in action.
 
 
-<div class="ribbon ribbon-green">
+## Communicate
 
-## <i class="fa fa-users"></i> Communicate
-
-_All else equal, hire the candidate who writes more effectively; it demonstrates a higher level thought and communication._
-
-</div>
+_If you're thinking without writing, you only think you're thinking._ -Leslie Lampert
 
 ### Radical Candor
 
@@ -49,31 +42,27 @@ _All else equal, hire the candidate who writes more effectively; it demonstrates
 ### Strong Opinions; Weakly Held
 
 - Have enough passion to care and enough humility to embrace competing opinions.
-- Pick your battles judiciously, but be willing to stake your reputation on the battles you do pick.
+- Pick your battles judiciously, but be willing to _stake your reputation_ on the battles you do pick.
 - Weakly held opinions are overturned by better reasoning, not louder voices nor squeaky wheels.
 
 ### Persuade through Listening
 
 - Effective communication starts with active listening.
 - Disagreements usually stem from different context. Persuasion and alignment are most achievable once the contextual differences are clear.
-- Understand tradeoffs. Do not settle for mediocre compromise. Seek solutions that exist in the creative tension of tradeoffs. 
+- Understand tradeoffs. Do not settle for mediocre compromise. Seek solutions that exist in the **creative tension of tradeoffs**. 
 - The power to make decisions comes with the requirement to solicit and genuinely consider feedback.
 - Once a perspective is heard and understood, reiterating it is "squeaky wheel" politicking. Cut it out.
 - "I was right, but nobody listened to me" means "I failed to persuade anybody."
 
 
-<div class="ribbon ribbon-blue">
+## Execute
 
-## <i class="fa fa-wrench"></i> Execute
-
-_Great execution on a mediocre idea is better than mediocre execution of a great idea._
-
-</div>
+_Great execution on a mediocre idea beats mediocre execution of a great idea._
 
 ### Empower People; Expect Accountability
 
 - Teams have far more aggregate capacity then their leaders; leaders must be multipliers, not "plus ones".
-- Empowering people starts with individual competence and organizational clarity.
+- Empowering people starts with **individual competence and organizational clarity**.
 - With greater empowerment comes greater responsibility and accountability.
 - Leaders give credit and take blame - "buck stops here" mentality.
 
@@ -89,7 +78,7 @@ _Great execution on a mediocre idea is better than mediocre execution of a great
 
 - Work-life balance is not an enemy of startup or high-performance culture.
 - Work hard, and play hard. Personal lives affect work performance; proactive personal care is imperative and expected.
-- We run a marathon; we run it to win, not just for the sake of running it.
+- We run a marathon; _we run it to win_, not just for the sake of running it.
 - Value results, not effort. Reward sustainable delivery of value, not burnout-inducing heroics.
 - Drive toward outcomes, not merely completion.
 

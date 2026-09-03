@@ -1,22 +1,32 @@
 ---
 layout: page.liquid
 
-title: Anthony Nowell
-description: foo bar
+title: Work
+description: Professional experience, projects, and education of Anthony Nowell.
 data:
-  cover_path: /images/textures/px_by_Gre3g_@2X.png
+  nav: work
+  page_class: main-work
 ---
 
-<div style="font-size: 20px; margin-top: 50px;">
+<div class="objective">
 
-I am a technical leader obsessed with **high performing** teams and **learning organizations** with strong technical roots in **distributed system architecture**, **platform engineering**, and **product development**. I think a lot about outcomes, [DevOps principles](https://medium.com/ibm-garage/the-modern-devops-manifesto-f06c82964722), and [Systems Thinking](https://opensource.com/article/18/3/how-apply-systems-thinking-devops).
+Adaptable technical and organizational engineering leader in agent, platform, and product development. **Obsessed with Trust.**
+
+> Agentic systems · distributed systems · production operations · release management · customer success
+
 </div>
-
-<div class="ribbon ribbon-orange">
 
 ## Professional Experience
 
-</div>
+### [Howie](https://howie.com)
+> Solving calendars and scheduling for everyone — the AI secretarty.
+
+**Founding Engineer** <date>Feb 2025 - Present</date>
+
+- Designed eval harness and agent that replaced core human-in-the-loop business strategy
+- Delivered whitelabel assistant capability that drove significant portion of revenue growth
+
+---
 
 ### [Crea Makerspace](https://creamakerspace.com)
 > Inspiring and fostering a local community of creators.
@@ -96,11 +106,7 @@ Drove software distribution test strategy and security compliance for embedded d
 
 Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity (Windows Storage & File Systems)
 
-<div class="ribbon ribbon-green">
-
 ## Projects
-
-</div>
 
 **[Are We Learning Yet?](http://arewelearningyet.com)** - Creator and co-maintainer
 
@@ -111,11 +117,7 @@ Cataloging the Rust-based Machine Learning ecosystem
 Maintain a variety of OSS Rust crates across multiple domains (CLI user experience, client libraries, OS utilities)
 
 
-<div class="ribbon ribbon-blue">
-
 ## Education
-
-</div>
 
 **Iowa State University** - Graduated 2008 - B.S. in Computer Engineering
 

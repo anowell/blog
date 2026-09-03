@@ -1,27 +1,27 @@
 ---
-layout: default.liquid
+layout: page.liquid
 title: "Anthony Nowell"
+description: Engineering leader. Builder. Systems thinker. Building systems, products, and teams that earn trust.
 data:
-  theme: dark-bg
+  nav: home
+  page_class: main-home
 ---
-<div class="frontpage">
-  {% include 'bio.liquid' %}
+<section class="hero">
+  <h1 class="thesis">Build <span class="slash">//</span> Trust</h1>
 
+  <p class="tagline">I build systems, products, and teams that <span class="mark-underline">earn</span> trust.</p>
+  <p class="roles">Engineering leader. Builder. Systems thinker.</p>
+  <p class="belief">
+    <span class="mark-highlight">All-in on Trust.</span>
+    <span class="annotation" aria-hidden="true">
+      <svg class="annotation-arrow" viewBox="0 0 52 20" width="52" height="20"><path d="M50 16 C40 10, 24 7, 4 9 M11 4 C8 5.5, 5.5 7.5, 4 9 C5.5 10.5, 7.5 13, 9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="annotation-text">the whole game</span>
+    </span>
+  </p>
 
-  <nav class="extra-nav">
-    <div><h3><a href="/portfolio">Portfolio</a></h3></div>
-    <div><h3><a href="/principles">Leadership Principles</a></h3></div>
-  </nav>
-
-  <hr>
-
-  <div>
-    <nav class="post-nav">
-      {% for post in collections.posts.pages %}
-        <div>
-          <h3><a href="{{post.permalink}}">{{ post.title }}</a></h3>
-        </div>
-      {% endfor %}
-    </nav>
+  <div class="currently">
+    <div class="label"><span class="slash">//</span> Currently</div>
+    <p>Building <a href="https://howie.com">Howie</a>, the AI secretary.</p>
   </div>
-</div>
+</section>
+<div class="rule rule-heavy hero-rule"></div>

@@ -1,0 +1,36 @@
+<aside class="sidenav">
+  {% if nav == "home" %}
+  <img class="sidenav-photo" src="/images/profile.jpg" alt="Anthony Nowell">
+  {% endif %}
+  <a class="sidenav-name" href="/"><span>Anthony</span> <span>Nowell</span></a>
+  <div class="rule rule-heavy rule-name"></div>
+
+  <nav class="sidenav-links">
+    <a href="/portfolio"{% if nav == "work" %} class="active"{% endif %}>Work</a>
+    <a href="/principles"{% if nav == "principles" %} class="active"{% endif %}>Principles</a>
+    <a href="/writing"{% if nav == "writing" %} class="active"{% endif %}>Writing</a>
+  </nav>
+
+  {% if nav == "work" %}
+  <p class="sidenav-tagline">I build systems, products, and teams that <span class="mark-underline">earn</span> trust.</p>
+  {% else %}
+  <div class="sidenav-writing">
+    <div class="label"><span class="slash">//</span> Writing</div>
+    {% for post in collections.posts.pages limit:5 %}
+    <a href="/{{ post.permalink }}"{% if post.permalink == page.permalink %} class="active"{% endif %}>{{ post.title }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="sidenav-foot">
+    <div class="rule rule-short"></div>
+    <div class="meta">Seattle, WA</div>
+    <div class="meta">Updated {{ "now" | date: "%b %Y" }}</div>
+    <nav class="social">
+      <a href="https://github.com/anowell" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/anthonynowell" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="https://twitter.com/atnowell" title="Twitter"><i class="fa fa-twitter"></i></a>
+      <a href="mailto:anowell@gmail.com" title="Email"><i class="fa fa-envelope-o"></i></a>
+    </nav>
+  </div>
+</aside>

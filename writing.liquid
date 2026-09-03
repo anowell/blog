@@ -1,0 +1,22 @@
+---
+layout: page.liquid
+title: "Writing"
+description: Posts by Anthony Nowell.
+data:
+  nav: writing
+  page_class: main-writing
+---
+<h1 class="page-title">Writing</h1>
+<div class="rule rule-signal"></div>
+
+<ul class="writing-list">
+  {% for post in collections.posts.pages %}
+  <li>
+    <span class="mono writing-date">{{ post.published_date | date: "%b %Y" }}</span>
+    <div>
+      <a class="writing-title" href="/{{ post.permalink }}">{{ post.title }}</a>
+      {% if post.description and post.description != "" %}<div class="writing-desc">{{ post.description }}</div>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
