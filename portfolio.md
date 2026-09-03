@@ -106,17 +106,6 @@ Drove software distribution test strategy and security compliance for embedded d
 
 Developed Windows 7 storage certification tools relating to SSDs, Storage Controllers, and Data Integrity (Windows Storage & File Systems)
 
-## Projects
-
-**[Are We Learning Yet?](http://arewelearningyet.com)** - Creator and co-maintainer
-
-Cataloging the Rust-based Machine Learning ecosystem
-
-**[Rust OSS Maintainer](https://crates.io/users/anowell?sort=recent-downloads)** - Creator and maintainer
-
-Maintain a variety of OSS Rust crates across multiple domains (CLI user experience, client libraries, OS utilities)
-
-
 ## Education
 
 **Iowa State University** - Graduated 2008 - B.S. in Computer Engineering

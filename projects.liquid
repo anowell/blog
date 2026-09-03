@@ -1,0 +1,137 @@
+---
+layout: page.liquid
+title: "Projects"
+description: Side projects and open source by Anthony Nowell.
+data:
+  nav: projects
+  page_class: main-projects
+  projects:
+    - name: Runes
+      dates: "2024 – now"
+      lede: Tasks, docs, and decision tracking. Distributed, version-controlled, for humans and agents.
+      body: A local-first tracker where every task, doc, and decision is a markdown file with KDL frontmatter, committed alongside the code. Your editor, your VCS, and the same files an agent can read and write.
+      tech: Rust, Git, Jj, Pijul
+      role: Creator
+      links:
+        - label: GitHub
+          url: https://github.com/anowell/runes
+    - name: temporal-fun
+      dates: "2025 – now"
+      lede: Ergonomics for the Temporal date-time API.
+      body: A modern date utility library built for the Temporal API. It is the open source layer that powers scheduling in Howie, the AI secretary, where getting time zones and recurrence right is the whole product.
+      tech: TypeScript, Temporal
+      role: Creator, at Howie
+      links:
+        - label: npm
+          url: https://www.npmjs.com/package/temporal-fun
+        - label: GitHub
+          url: https://github.com/howie-code/temporal-fun
+    - name: Breq // Toren
+      dates: "2026 – now"
+      lede: Workspace management for agentic development.
+      body: Toren orchestrates git worktrees and jj workspaces for agentic workflows. Per-workspace setup, teardown, & services. Per-workspace task and implementation tracking. Provides the building blocks for building custom agentic workflows including terminal multiplexing to the browser. Named for Ancillary Justice.
+      tech: Rust, Git, Jj, Terminal Multiplexers, Axum
+      role: Creator
+      links:
+        - label: GitHub
+          url: https://github.com/anowell/toren
+    - name: Subbier
+      dates: "2026 – now"
+      lede: Manage multiple agent subscriptions.
+      body: Monitor Claude and Codex subscription usage across several accounts. Also proxies and load-balances API traffic through subscriptions.
+      tech: Rust
+      role: Creator
+      links:
+        - label: GitHub
+          url: https://github.com/anowell/subbier
+          soon: not yet published
+    - name: Dangles
+      dates: "2026 – now"
+      lede: Tracking hockey development progress.
+      body: A mobile-first tracker for hockey stickhandling skill development — my kids and I play hockey.
+      tech: Rust, Axum, SvelteKit, Postgres, AWS
+      role: Creator
+      links:
+        - label: lockindangles.com
+          url: https://lockindangles.com
+    - name: Inara
+      dates: "2026 – now"
+      lede: Postgres schema explorer TUI
+      body: A companion for Postgres. Explicitly not a full-blown client.
+      tech: Rust, SQLx, Postgres
+      role: Creator
+      links:
+        - label: GitHub
+          url: https://github.com/anowell/inara
+    - name: Are We Learning Yet?
+      dates: "2016 – now"
+      lede: Cataloging the state of Rust ML and AI.
+      body: Rust is a systems language, but is it a machine learning language? A community-maintained catalog of the Rust ML and AI ecosystem, inspired by Are We Web Yet.
+      tech: Rust, Cobalt
+      role: Creator, co-maintainer
+      links:
+        - label: arewelearningyet.com
+          url: https://arewelearningyet.com
+        - label: GitHub
+          url: https://github.com/anowell/are-we-learning-yet
+    - name: Maglev
+      dates: "2024 – now"
+      lede: Axum-based web framework focused on building JSON APIs.
+      body: A batteries-included library on Axum and SQLx. JWT auth, error handling, config, encryption utilities, graceful shutdown, background workers. Just a library. It extends Axum rather than replacing it.
+      tech: Rust, Axum, SQLx
+      role: Creator
+      status: Undermaintained
+      links:
+        - label: GitHub
+          url: https://github.com/anowell/maglev
+---
+<header class="page-head">
+  <h1 class="page-title">Projects</h1>
+  <div class="rule rule-signal"></div>
+  <p class="construction">
+    <span class="label"><span class="slash">//</span> Under construction</span>
+    <span class="annotation" aria-hidden="true">
+      <svg class="annotation-arrow" viewBox="0 0 52 20" width="52" height="20"><path d="M50 16 C40 10, 24 7, 4 9 M11 4 C8 5.5, 5.5 7.5, 4 9 C5.5 10.5, 7.5 13, 9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="annotation-text">still on the bench</span>
+    </span>
+  </p>
+  <p class="lede">Side projects and open source. Most of it is Rust.</p>
+</header>
+
+{% for p in page.data.projects %}
+<article class="project">
+  <header class="project-head">
+    <h2>{{ p.name | replace: " // ", ' <span class="slash">//</span> ' }}</h2>
+    <date>{{ p.dates }}</date>
+  </header>
+
+  <div class="project-body">
+    <p class="project-lede">{{ p.lede }}</p>
+    <p>{{ p.body }}</p>
+    <dl class="project-meta">
+      {% if p.tech %}<div><dt class="label">Tech</dt><dd>{{ p.tech }}</dd></div>{% endif %}
+      {% if p.role %}<div><dt class="label">Role</dt><dd>{{ p.role }}</dd></div>{% endif %}
+      {% if p.status %}<div><dt class="label">Status</dt><dd>{{ p.status }}</dd></div>{% endif %}
+    </dl>
+  </div>
+
+  {% if p.image %}
+  <figure class="artifact">
+    <img src="{{ p.image }}" alt="{{ p.image_alt | default: p.name }}">
+    {% if p.image_note %}<figcaption class="annotation" aria-hidden="true"><span class="annotation-text">{{ p.image_note }}</span></figcaption>{% endif %}
+  </figure>
+  {% else %}
+  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
+    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  </figure>
+  {% endif %}
+
+  <footer class="project-links mono">
+    <span>View</span>
+    {% for l in p.links %}
+    <span class="slash">//</span>
+    {% if l.soon %}<span class="link-soon">{{ l.label }}<span class="link-soon-note">{{ l.soon }}</span></span>{% else %}<a href="{{ l.url }}">{{ l.label }}</a>{% endif %}
+    {% endfor %}
+  </footer>
+</article>
+{% endfor %}
