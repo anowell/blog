@@ -247,7 +247,8 @@ img {
         background-size: 0% 100%;
         background-repeat: no-repeat;
     }
-    .marks-live .hero .annotation:not(.is-drawn) {
+    .marks-live .hero .annotation:not(.is-drawn),
+    .marks-live .page-head .annotation:not(.is-drawn) {
         opacity: 0;
     }
     .mark-underline.is-drawn::after {
@@ -265,6 +266,9 @@ img {
     }
     .hero .annotation.is-drawn {
         animation: appear 0.3s 1.3s ease-out both;
+    }
+    .page-head .annotation.is-drawn {
+        animation: appear 0.3s 0.5s ease-out both;
     }
 }
 
@@ -749,6 +753,231 @@ date {
     margin-left: 4px;
 }
 
+/* Projects --------------------------------------------------------------
+   Each project is one entry on the bench: title and date chip, a short
+   description with mono metadata, and one artifact. The artifact column
+   escapes the reading measure to the right. Until a screenshot exists the
+   slot is an honest empty one, taped down. */
+
+.main-projects {
+    max-width: calc(var(--measure) + 128px + 380px);
+}
+
+.page-head .rule-signal {
+    margin-bottom: 22px;
+}
+
+.construction {
+    margin: 0 0 14px;
+    white-space: nowrap;
+}
+
+.construction .label {
+    color: var(--signal);
+}
+
+.construction .annotation {
+    font-size: 22px;
+    margin-left: 6px;
+}
+
+.page-head .lede {
+    max-width: var(--measure);
+    margin-bottom: 24px;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-areas:
+        "head  head"
+        "body  artifact"
+        "links artifact";
+    column-gap: 48px;
+    padding: 36px 0 40px;
+    border-top: 1px solid var(--rule);
+}
+
+.project:first-of-type {
+    border-top: 2px solid var(--rule-strong);
+}
+
+.project-head {
+    grid-area: head;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.project-head h2 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.project-head h2 .slash {
+    margin: 0 2px;
+}
+
+.project-head date {
+    float: none;
+    margin: 0;
+    position: relative;
+    top: -3px;
+}
+
+.project-body {
+    grid-area: body;
+    max-width: var(--measure);
+}
+
+.project-lede {
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.project-body p {
+    color: var(--ink);
+}
+
+.project-meta {
+    display: grid;
+    gap: 14px 32px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, max-content));
+    margin: 22px 0 0;
+}
+
+.project-meta div {
+    margin: 0;
+}
+
+.project-meta dt {
+    margin-bottom: 2px;
+}
+
+.project-meta dd {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.artifact {
+    grid-area: artifact;
+    position: relative;
+    margin: 6px 0 0;
+    align-self: start;
+}
+
+.artifact img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--rule);
+}
+
+/* The tape is authored, not simulated texture: one pale strip, set slightly
+   off square, over the top edge of the artifact. */
+.artifact::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 72px;
+    height: 18px;
+    margin-left: -36px;
+    background: rgba(236, 226, 200, 0.85);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    transform: rotate(-3deg);
+    z-index: 1;
+}
+
+.project:nth-of-type(even) .artifact::before {
+    transform: rotate(2.5deg);
+    margin-left: -30px;
+}
+
+.artifact-pending {
+    aspect-ratio: 4 / 3;
+    border: 1px dashed var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.artifact-pending .mono {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+.artifact-pending .slash {
+    font-weight: 500;
+}
+
+.artifact figcaption.annotation {
+    position: absolute;
+    right: -8px;
+    top: -34px;
+    margin: 0;
+}
+
+.project-links {
+    grid-area: links;
+    align-self: end;
+    margin-top: 28px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 10px;
+}
+
+.project-links a {
+    text-decoration: none;
+    color: var(--ink);
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.project-links .slash {
+    font-weight: 500;
+}
+
+.link-soon {
+    color: var(--ink-faint);
+}
+
+.link-soon-note {
+    margin-left: 8px;
+    font-family: var(--hand);
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--signal);
+    display: inline-block;
+    transform: rotate(-2deg);
+    position: relative;
+    top: 1px;
+}
+
 /* Grid helper (used by posts) ------------------------------------------ */
 
 .grid {
@@ -763,6 +992,26 @@ date {
 }
 
 /* Responsive ------------------------------------------------------------ */
+
+@media (max-width: 1279px) {
+    .project {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "head"
+            "body"
+            "artifact"
+            "links";
+    }
+
+    .artifact {
+        max-width: 440px;
+        margin-top: 28px;
+    }
+
+    .project-links {
+        margin-top: 24px;
+    }
+}
 
 @media (max-width: 1023px) {
     .sidenav {
@@ -791,7 +1040,8 @@ date {
 
     .sidenav-links {
         flex-direction: row;
-        gap: 18px;
+        flex-wrap: wrap;
+        gap: 8px 18px;
         justify-content: flex-end;
     }
 
@@ -889,6 +1139,33 @@ date {
         float: none;
         display: inline-block;
         margin: 4px 0 8px;
+    }
+
+    .construction {
+        white-space: normal;
+    }
+
+    .construction .annotation {
+        display: block;
+        margin: 8px 0 0;
+        transform: rotate(-3deg);
+    }
+
+    .construction .annotation-arrow {
+        transform: rotate(60deg);
+    }
+
+    .project-head {
+        flex-wrap: wrap;
+        gap: 8px 16px;
+    }
+
+    .project-head h2 {
+        font-size: 19px;
+    }
+
+    .project-head date {
+        top: 0;
     }
 }
 
