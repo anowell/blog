@@ -440,6 +440,10 @@ img {
     color: var(--ink);
 }
 
+.mobile-foot {
+    display: none;
+}
+
 .main {
     margin-left: var(--sidenav-w);
     padding: 56px 64px 96px;
@@ -1068,6 +1072,15 @@ date {
 
     .main-home {
         min-height: 0;
+    }
+
+    .mobile-foot {
+        display: block;
+        padding: 0 24px 40px;
+    }
+
+    .mobile-foot .rule-short {
+        margin: 0 0 14px;
     }
 
     .post-banner {
