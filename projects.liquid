@@ -5,20 +5,70 @@ description: Side projects and open source by Anthony Nowell.
 data:
   nav: projects
   page_class: main-projects
+  extra_css: https://cdn.jsdelivr.net/npm/asciinema-player@3.10.0/dist/bundle/asciinema-player.css
   projects:
     - name: Runes
+      image: /images/projects/runes.png
+      image_alt: "rn show output for a closed task, with KDL frontmatter and a markdown body"
       dates: "2024 – now"
       lede: Tasks, docs, and decision tracking. Distributed, version-controlled, for humans and agents.
-      body: A local-first tracker where every task, doc, and decision is a markdown file with KDL frontmatter, committed alongside the code. Your editor, your VCS, and the same files an agent can read and write.
+      body: A local-first tracker where every task, doc, and decision is a markdown file with KDL frontmatter. Your editor, your VCS, and the same files an agent can read and write.
       tech: Rust, Git, Jj, Pijul
       role: Creator
       links:
         - label: GitHub
           url: https://github.com/anowell/runes
     - name: temporal-fun
+      snippets:
+        - title: "parse"
+          lang: typescript
+          code: |
+            import { date, dateTime, zoned, instant }
+              from 'temporal-fun';
+
+            date('2025-03-20')          // PlainDate
+            date('2025-03-20T15:30')    // PlainDate
+            dateTime('2025-03-20')      // midnight
+            instant('2025-03-20T15:30Z')
+
+            zoned('2025-03-20T15:30[America/New_York]')
+            zoned('2025-03-20', 'America/New_York')
+            zoned(new Date(), 'America/New_York')
+        - title: "format"
+          lang: typescript
+          code: |
+            import { fmtShort, fmtMedium, fmtLong, fmtTz,
+              fmtRelativeToNow } from 'temporal-fun';
+
+            setLocales('en-US');
+            const d = zoned('2025-03-24T08:30',
+                            'America/New_York');
+
+            fmtShort(d)          // "3/24/25, 8:30 AM EDT"
+            fmtMedium(date(d))   // "Mar 24, 2025"
+            fmtLong(date(d))     // "March 24, 2025"
+            fmtRelativeToNow(d)  // "2 days ago"
+            fmtTz(d)             // "EDT"
+            fmtMedium(date(d), 'en-GB') // "24 Mar 2025"
+        - title: "compare & math"
+          lang: typescript
+          code: |
+            import { isBefore, isSameWeek, min, round,
+              startOfWeek, endOfMonth, eachDayOfInterval }
+              from 'temporal-fun';
+
+            isBefore(a, b)            // boolean
+            isSameWeek(a, b, 1)       // weeks start Monday
+            min([a, b, c])            // earliest
+
+            startOfWeek(today(), 1)   // this Monday
+            endOfMonth(today())       // PlainDate
+            round(dt, 'hour')         // nearest hour
+
+            eachDayOfInterval({ start, end }) // days
       dates: "2025 – now"
       lede: Ergonomics for the Temporal date-time API.
-      body: A modern date utility library built for the Temporal API. It is the open source layer that powers scheduling in Howie, the AI secretary, where getting time zones and recurrence right is the whole product.
+      body: A modern date utility library built for the Temporal API. It is the open source layer that powers scheduling in Howie, the AI secretary, where getting dates and times right is table stakes.
       tech: TypeScript, Temporal
       role: Creator, at Howie
       links:
@@ -27,15 +77,21 @@ data:
         - label: GitHub
           url: https://github.com/howie-code/temporal-fun
     - name: Breq // Toren
+      cast: /images/projects/breq-do.cast
       dates: "2026 – now"
       lede: Workspace management for agentic development.
-      body: Toren orchestrates git worktrees and jj workspaces for agentic workflows. Per-workspace setup, teardown, & services. Per-workspace task and implementation tracking. Provides the building blocks for building custom agentic workflows including terminal multiplexing to the browser. Named for Ancillary Justice.
+      body: Toren orchestrates git worktrees and jj workspaces for agentic workflows. Per-workspace setup, teardown, & services. Per-workspace task and implementation tracking. Provides the building blocks for building custom agentic workflows including terminal multiplexing to the browser.
       tech: Rust, Git, Jj, Terminal Multiplexers, Axum
       role: Creator
       links:
         - label: GitHub
           url: https://github.com/anowell/toren
     - name: Subbier
+      frames:
+        - src: /images/projects/subbier-menubar.png
+          alt: "Subbier menubar dropdown showing Codex and Claude subscription usage"
+        - src: /images/projects/subbier-tui.png
+          alt: "Subbier terminal TUI showing subscription usage and proxy traffic"
       dates: "2026 – now"
       lede: Manage multiple agent subscriptions.
       body: Monitor Claude and Codex subscription usage across several accounts. Also proxies and load-balances API traffic through subscriptions.
@@ -44,8 +100,9 @@ data:
       links:
         - label: GitHub
           url: https://github.com/anowell/subbier
-          soon: not yet published
     - name: Dangles
+      image: /images/projects/dangles.jpg
+      image_alt: "lockindangles.com landing page: Track Your Path to 10,000 Touches"
       dates: "2026 – now"
       lede: Tracking hockey development progress.
       body: A mobile-first tracker for hockey stickhandling skill development — my kids and I play hockey.
@@ -55,6 +112,13 @@ data:
         - label: lockindangles.com
           url: https://lockindangles.com
     - name: Inara
+      frames:
+        - src: /images/projects/inara-table.png
+          alt: "Inara schema view of a Postgres table with a HUD showing row count, size, indexes, and unindexed foreign keys"
+        - src: /images/projects/inara-column.png
+          alt: "Inara column HUD showing an enum type, fill rate, values, and ordering"
+        - src: /images/projects/inara-goto.png
+          alt: "Inara goto menu: jump to incoming refs, FK target, parent table, indexes, type definition, or migrations"
       dates: "2026 – now"
       lede: Postgres schema explorer TUI
       body: A companion for Postgres. Explicitly not a full-blown client.
@@ -64,6 +128,8 @@ data:
         - label: GitHub
           url: https://github.com/anowell/inara
     - name: Are We Learning Yet?
+      image: /images/projects/are-we-learning-yet.png
+      image_alt: "arewelearningyet.com: a curated guide to AI and machine learning in Rust"
       dates: "2016 – now"
       lede: Cataloging the state of Rust ML and AI.
       body: Rust is a systems language, but is it a machine learning language? A community-maintained catalog of the Rust ML and AI ecosystem, inspired by Are We Web Yet.
@@ -75,6 +141,87 @@ data:
         - label: GitHub
           url: https://github.com/anowell/are-we-learning-yet
     - name: Maglev
+      snippets:
+        - title: "errors"
+          lang: rust
+          code: |
+            use maglev::HttpError;
+
+            #[derive(Debug, thiserror::Error, HttpError)]
+            pub enum Error {
+                #[error("post {0} not found")]
+                #[http_error(NOT_FOUND, "post not found")]
+                NotFound(Uuid),
+
+                #[error("auth: {0}")]
+                #[http_error(UNAUTHORIZED, "unauthorized")]
+                Auth(#[from] maglev::auth::AuthError),
+
+                #[error("db: {0}")]
+                #[http_error(INTERNAL_SERVER_ERROR)]
+                Sqlx(#[from] sqlx::Error),
+            }
+        - title: "auth"
+          lang: rust
+          code: |
+            use maglev::auth::{AuthError, Jwt};
+            use maglev::auth::ClaimsExtractor;
+
+            pub struct Author { pub id: Uuid }
+
+            impl<S: Send + Sync> ClaimsExtractor<S>
+                for Author {
+                type Claims = Claims;
+                type Rejection = AuthError;
+
+                async fn try_extract(c: Claims, _: &S)
+                    -> Result<Self, AuthError> {
+                    Ok(Author { id: c.sub })
+                }
+            }
+
+            // Any handler can now ask for the author:
+            async fn me(me: Jwt<Author>) -> Json<Author>
+        - title: "handler"
+          lang: rust
+          code: |
+            async fn create_post(
+                author: Jwt<Author>,
+                State(db): State<PgPool>,
+                Json(new): Json<NewPost>,
+            ) -> Result<Json<Post>, Error> {
+                let post = sqlx::query_as!(
+                    Post,
+                    "INSERT INTO posts
+                       (author_id, title, body)
+                     VALUES ($1, $2, $3)
+                     RETURNING *",
+                    author.id, new.title, new.body
+                )
+                .fetch_one(&db)
+                .await?;
+
+                Ok(Json(post))
+            }
+        - title: "serve"
+          lang: rust
+          code: |
+            let jwt = JwtConfig::new(&config.hmac_key)
+                .duration(Duration::minutes(30))
+                .build();
+
+            let registry = JobRegistry::new()
+                .register::<PublishScheduledPosts>();
+            Worker::new(queue, registry, ctx.clone())
+                .concurrency(2)
+                .start();
+
+            let app = Router::new()
+                .route("/posts", post(create_post))
+                .with_state(ctx);
+
+            maglev::serve(([0, 0, 0, 0], 8080), app)
+                .await?;
       dates: "2024 – now"
       lede: Axum-based web framework focused on building JSON APIs.
       body: A batteries-included library on Axum and SQLx. JWT auth, error handling, config, encryption utilities, graceful shutdown, background workers. Just a library. It extends Axum rather than replacing it.
@@ -88,13 +235,6 @@ data:
 <header class="page-head">
   <h1 class="page-title">Projects</h1>
   <div class="rule rule-signal"></div>
-  <p class="construction">
-    <span class="label"><span class="slash">//</span> Under construction</span>
-    <span class="annotation" aria-hidden="true">
-      <svg class="annotation-arrow" viewBox="0 0 52 20" width="52" height="20"><path d="M50 16 C40 10, 24 7, 4 9 M11 4 C8 5.5, 5.5 7.5, 4 9 C5.5 10.5, 7.5 13, 9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="annotation-text">still on the bench</span>
-    </span>
-  </p>
   <p class="lede">Side projects and open source. Most of it is Rust.</p>
 </header>
 
@@ -115,7 +255,30 @@ data:
     </dl>
   </div>
 
-  {% if p.image %}
+  {% if p.snippets %}
+  <figure class="artifact artifact-code" data-carousel data-interval="7000">
+    <div class="codeframe">
+      <div class="codeframe-bar"><span>{{ p.name }}</span><span class="slash">//</span><span class="codeframe-title">{{ p.snippets.first.title }}</span></div>
+      <div class="slides">
+        {% for s in p.snippets %}
+        <pre class="slide{% if forloop.first %} is-active{% endif %}" data-title="{{ s.title }}"><code class="language-{{ s.lang }}">{{ s.code | strip | escape }}</code></pre>
+        {% endfor %}
+      </div>
+    </div>
+  </figure>
+  {% elsif p.cast %}
+  <figure class="artifact artifact-cast">
+    <div class="cast" data-cast="{{ p.cast }}" data-cols="100" data-rows="24"></div>
+  </figure>
+  {% elsif p.frames %}
+  <figure class="artifact artifact-frames" data-carousel>
+    <div class="slides">
+      {% for f in p.frames %}
+      <img class="slide{% if forloop.first %} is-active{% endif %}" src="{{ f.src }}" alt="{{ f.alt }}">
+      {% endfor %}
+    </div>
+  </figure>
+  {% elsif p.image %}
   <figure class="artifact">
     <img src="{{ p.image }}" alt="{{ p.image_alt | default: p.name }}">
     {% if p.image_note %}<figcaption class="annotation" aria-hidden="true"><span class="annotation-text">{{ p.image_note }}</span></figcaption>{% endif %}
@@ -135,3 +298,7 @@ data:
   </footer>
 </article>
 {% endfor %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.10.0/dist/bundle/asciinema-player.min.js"></script>
+<script src="/js/carousel.js"></script>
