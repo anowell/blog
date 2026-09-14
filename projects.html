@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.10.0/dist/bundle/asciinema-player.css">
+    
 
   </head>
   <body>
@@ -66,13 +68,6 @@
         <header class="page-head">
   <h1 class="page-title">Projects</h1>
   <div class="rule rule-signal"></div>
-  <p class="construction">
-    <span class="label"><span class="slash">//</span> Under construction</span>
-    <span class="annotation" aria-hidden="true">
-      <svg class="annotation-arrow" viewBox="0 0 52 20" width="52" height="20"><path d="M50 16 C40 10, 24 7, 4 9 M11 4 C8 5.5, 5.5 7.5, 4 9 C5.5 10.5, 7.5 13, 9 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="annotation-text">still on the bench</span>
-    </span>
-  </p>
   <p class="lede">Side projects and open source. Most of it is Rust.</p>
 </header>
 
@@ -85,7 +80,7 @@
 
   <div class="project-body">
     <p class="project-lede">Tasks, docs, and decision tracking. Distributed, version-controlled, for humans and agents.</p>
-    <p>A local-first tracker where every task, doc, and decision is a markdown file with KDL frontmatter, committed alongside the code. Your editor, your VCS, and the same files an agent can read and write.</p>
+    <p>A local-first tracker where every task, doc, and decision is a markdown file with KDL frontmatter. Your editor, your VCS, and the same files an agent can read and write.</p>
     <dl class="project-meta">
       <div><dt class="label">Tech</dt><dd>Rust, Git, Jj, Pijul</dd></div>
       <div><dt class="label">Role</dt><dd>Creator</dd></div>
@@ -94,8 +89,9 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact">
+    <img src="/images/projects/runes.png" alt="rn show output for a closed task, with KDL frontmatter and a markdown body">
+    
   </figure>
   
 
@@ -116,7 +112,7 @@
 
   <div class="project-body">
     <p class="project-lede">Ergonomics for the Temporal date-time API.</p>
-    <p>A modern date utility library built for the Temporal API. It is the open source layer that powers scheduling in Howie, the AI secretary, where getting time zones and recurrence right is the whole product.</p>
+    <p>A modern date utility library built for the Temporal API. It is the open source layer that powers scheduling in Howie, the AI secretary, where getting dates and times right is table stakes.</p>
     <dl class="project-meta">
       <div><dt class="label">Tech</dt><dd>TypeScript, Temporal</dd></div>
       <div><dt class="label">Role</dt><dd>Creator, at Howie</dd></div>
@@ -125,8 +121,53 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact artifact-code" data-carousel data-interval="7000">
+    <div class="codeframe">
+      <div class="codeframe-bar"><span>temporal-fun</span><span class="slash">//</span><span class="codeframe-title">parse</span></div>
+      <div class="slides">
+        
+        <pre class="slide is-active" data-title="parse"><code class="language-typescript">import { date, dateTime, zoned, instant }
+  from &#39;temporal-fun&#39;;
+
+date(&#39;2025-03-20&#39;)          // PlainDate
+date(&#39;2025-03-20T15:30&#39;)    // PlainDate
+dateTime(&#39;2025-03-20&#39;)      // midnight
+instant(&#39;2025-03-20T15:30Z&#39;)
+
+zoned(&#39;2025-03-20T15:30[America/New_York]&#39;)
+zoned(&#39;2025-03-20&#39;, &#39;America/New_York&#39;)
+zoned(new Date(), &#39;America/New_York&#39;)</code></pre>
+        
+        <pre class="slide" data-title="format"><code class="language-typescript">import { fmtShort, fmtMedium, fmtLong, fmtTz,
+  fmtRelativeToNow } from &#39;temporal-fun&#39;;
+
+setLocales(&#39;en-US&#39;);
+const d = zoned(&#39;2025-03-24T08:30&#39;,
+                &#39;America/New_York&#39;);
+
+fmtShort(d)          // &quot;3/24/25, 8:30 AM EDT&quot;
+fmtMedium(date(d))   // &quot;Mar 24, 2025&quot;
+fmtLong(date(d))     // &quot;March 24, 2025&quot;
+fmtRelativeToNow(d)  // &quot;2 days ago&quot;
+fmtTz(d)             // &quot;EDT&quot;
+fmtMedium(date(d), &#39;en-GB&#39;) // &quot;24 Mar 2025&quot;</code></pre>
+        
+        <pre class="slide" data-title="compare & math"><code class="language-typescript">import { isBefore, isSameWeek, min, round,
+  startOfWeek, endOfMonth, eachDayOfInterval }
+  from &#39;temporal-fun&#39;;
+
+isBefore(a, b)            // boolean
+isSameWeek(a, b, 1)       // weeks start Monday
+min([a, b, c])            // earliest
+
+startOfWeek(today(), 1)   // this Monday
+endOfMonth(today())       // PlainDate
+round(dt, &#39;hour&#39;)         // nearest hour
+
+eachDayOfInterval({ start, end }) // days</code></pre>
+        
+      </div>
+    </div>
   </figure>
   
 
@@ -150,7 +191,7 @@
 
   <div class="project-body">
     <p class="project-lede">Workspace management for agentic development.</p>
-    <p>Toren orchestrates git worktrees and jj workspaces for agentic workflows. Per-workspace setup, teardown, & services. Per-workspace task and implementation tracking. Provides the building blocks for building custom agentic workflows including terminal multiplexing to the browser. Named for Ancillary Justice.</p>
+    <p>Toren orchestrates git worktrees and jj workspaces for agentic workflows. Per-workspace setup, teardown, & services. Per-workspace task and implementation tracking. Provides the building blocks for building custom agentic workflows including terminal multiplexing to the browser.</p>
     <dl class="project-meta">
       <div><dt class="label">Tech</dt><dd>Rust, Git, Jj, Terminal Multiplexers, Axum</dd></div>
       <div><dt class="label">Role</dt><dd>Creator</dd></div>
@@ -159,8 +200,8 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact artifact-cast">
+    <div class="cast" data-cast="/images/projects/breq-do.cast" data-cols="100" data-rows="24"></div>
   </figure>
   
 
@@ -190,8 +231,14 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact artifact-frames" data-carousel>
+    <div class="slides">
+      
+      <img class="slide is-active" src="/images/projects/subbier-menubar.png" alt="Subbier menubar dropdown showing Codex and Claude subscription usage">
+      
+      <img class="slide" src="/images/projects/subbier-tui.png" alt="Subbier terminal TUI showing subscription usage and proxy traffic">
+      
+    </div>
   </figure>
   
 
@@ -199,7 +246,7 @@
     <span>View</span>
     
     <span class="slash">//</span>
-    <span class="link-soon">GitHub<span class="link-soon-note">not yet published</span></span>
+    <a href="https://github.com/anowell/subbier">GitHub</a>
     
   </footer>
 </article>
@@ -221,8 +268,9 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact">
+    <img src="/images/projects/dangles.jpg" alt="lockindangles.com landing page: Track Your Path to 10,000 Touches">
+    
   </figure>
   
 
@@ -252,8 +300,16 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact artifact-frames" data-carousel>
+    <div class="slides">
+      
+      <img class="slide is-active" src="/images/projects/inara-table.png" alt="Inara schema view of a Postgres table with a HUD showing row count, size, indexes, and unindexed foreign keys">
+      
+      <img class="slide" src="/images/projects/inara-column.png" alt="Inara column HUD showing an enum type, fill rate, values, and ordering">
+      
+      <img class="slide" src="/images/projects/inara-goto.png" alt="Inara goto menu: jump to incoming refs, FK target, parent table, indexes, type definition, or migrations">
+      
+    </div>
   </figure>
   
 
@@ -283,8 +339,9 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact">
+    <img src="/images/projects/are-we-learning-yet.png" alt="arewelearningyet.com: a curated guide to AI and machine learning in Rust">
+    
   </figure>
   
 
@@ -317,8 +374,85 @@
   </div>
 
   
-  <figure class="artifact artifact-pending" aria-label="Screenshot pending">
-    <span class="mono">Screenshot <span class="slash">//</span> pending</span>
+  <figure class="artifact artifact-code" data-carousel data-interval="7000">
+    <div class="codeframe">
+      <div class="codeframe-bar"><span>Maglev</span><span class="slash">//</span><span class="codeframe-title">errors</span></div>
+      <div class="slides">
+        
+        <pre class="slide is-active" data-title="errors"><code class="language-rust">use maglev::HttpError;
+
+#[derive(Debug, thiserror::Error, HttpError)]
+pub enum Error {
+    #[error(&quot;post {0} not found&quot;)]
+    #[http_error(NOT_FOUND, &quot;post not found&quot;)]
+    NotFound(Uuid),
+
+    #[error(&quot;auth: {0}&quot;)]
+    #[http_error(UNAUTHORIZED, &quot;unauthorized&quot;)]
+    Auth(#[from] maglev::auth::AuthError),
+
+    #[error(&quot;db: {0}&quot;)]
+    #[http_error(INTERNAL_SERVER_ERROR)]
+    Sqlx(#[from] sqlx::Error),
+}</code></pre>
+        
+        <pre class="slide" data-title="auth"><code class="language-rust">use maglev::auth::{AuthError, Jwt};
+use maglev::auth::ClaimsExtractor;
+
+pub struct Author { pub id: Uuid }
+
+impl&lt;S: Send + Sync&gt; ClaimsExtractor&lt;S&gt;
+    for Author {
+    type Claims = Claims;
+    type Rejection = AuthError;
+
+    async fn try_extract(c: Claims, _: &amp;S)
+        -&gt; Result&lt;Self, AuthError&gt; {
+        Ok(Author { id: c.sub })
+    }
+}
+
+// Any handler can now ask for the author:
+async fn me(me: Jwt&lt;Author&gt;) -&gt; Json&lt;Author&gt;</code></pre>
+        
+        <pre class="slide" data-title="handler"><code class="language-rust">async fn create_post(
+    author: Jwt&lt;Author&gt;,
+    State(db): State&lt;PgPool&gt;,
+    Json(new): Json&lt;NewPost&gt;,
+) -&gt; Result&lt;Json&lt;Post&gt;, Error&gt; {
+    let post = sqlx::query_as!(
+        Post,
+        &quot;INSERT INTO posts
+           (author_id, title, body)
+         VALUES ($1, $2, $3)
+         RETURNING *&quot;,
+        author.id, new.title, new.body
+    )
+    .fetch_one(&amp;db)
+    .await?;
+
+    Ok(Json(post))
+}</code></pre>
+        
+        <pre class="slide" data-title="serve"><code class="language-rust">let jwt = JwtConfig::new(&amp;config.hmac_key)
+    .duration(Duration::minutes(30))
+    .build();
+
+let registry = JobRegistry::new()
+    .register::&lt;PublishScheduledPosts&gt;();
+Worker::new(queue, registry, ctx.clone())
+    .concurrency(2)
+    .start();
+
+let app = Router::new()
+    .route(&quot;/posts&quot;, post(create_post))
+    .with_state(ctx);
+
+maglev::serve(([0, 0, 0, 0], 8080), app)
+    .await?;</code></pre>
+        
+      </div>
+    </div>
   </figure>
   
 
@@ -331,6 +465,10 @@
   </footer>
 </article>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.10.0/dist/bundle/asciinema-player.min.js"></script>
+<script src="/js/carousel.js"></script>
 
       </main>
       

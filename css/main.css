@@ -909,6 +909,144 @@ date {
     margin-left: -30px;
 }
 
+/* Carousel ------------------------------------------------------------- */
+
+.slides {
+    display: grid;
+}
+
+.slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+}
+
+.slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s ease, visibility 0s;
+}
+
+.artifact-frames .slide {
+    width: 100%;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dots button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    background: var(--rule-strong);
+    cursor: pointer;
+}
+
+.dots button.is-active {
+    background: var(--signal);
+}
+
+/* Code frame ------------------------------------------------------------ */
+
+.codeframe {
+    background: #282c34;
+    color: #abb2bf;
+    border: 1px solid var(--rule);
+    padding: 10px 14px 14px;
+    overflow: hidden;
+}
+
+.codeframe-bar {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #3a3f4b;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6c7382;
+}
+
+.codeframe-bar .slash {
+    font-size: 11px;
+}
+
+.codeframe-title {
+    color: #abb2bf;
+}
+
+.codeframe pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    overflow-x: auto;
+}
+
+.codeframe code {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    tab-size: 4;
+}
+
+/* asciinema player ------------------------------------------------------ */
+
+.artifact-cast .ap-wrapper,
+.artifact-cast .ap-player,
+.artifact-cast .ap-terminal {
+    border-radius: 0;
+}
+
+.artifact-cast .ap-player {
+    border: 1px solid var(--rule);
+}
+
+.asciinema-player-theme-blog {
+    --term-color-foreground: #abb2bf;
+    --term-color-background: #282c34;
+    --term-color-0: #282c34;
+    --term-color-1: #e06c75;
+    --term-color-2: #98c379;
+    --term-color-3: #e5c07b;
+    --term-color-4: #61afef;
+    --term-color-5: #c678dd;
+    --term-color-6: #56b6c2;
+    --term-color-7: #abb2bf;
+    --term-color-8: #5c6370;
+    --term-color-9: #e06c75;
+    --term-color-10: #98c379;
+    --term-color-11: #e5c07b;
+    --term-color-12: #61afef;
+    --term-color-13: #c678dd;
+    --term-color-14: #56b6c2;
+    --term-color-15: #ffffff;
+}
+
+/* One Dark tokens, trimmed to what highlight.js emits for Rust and TS. */
+.codeframe .hljs-keyword, .codeframe .hljs-meta .hljs-keyword { color: #c678dd; }
+.codeframe .hljs-string { color: #98c379; }
+.codeframe .hljs-number, .codeframe .hljs-literal, .codeframe .hljs-attr, .codeframe .hljs-variable { color: #d19a66; }
+.codeframe .hljs-title, .codeframe .hljs-title.function_ { color: #61afef; }
+.codeframe .hljs-type, .codeframe .hljs-title.class_, .codeframe .hljs-built_in, .codeframe .hljs-symbol { color: #e6c07b; }
+.codeframe .hljs-meta { color: #61afef; }
+.codeframe .hljs-comment { color: #7f8797; }
+.codeframe .hljs-punctuation { color: inherit; }
+
 .artifact-pending {
     aspect-ratio: 4 / 3;
     border: 1px dashed var(--rule);
