@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Writes _data/fizzjev.json from the fizzjev eval results. The results record
+the model alias that was requested; pass the version it resolved to as the
+second argument to show that instead.
+
+    bin/fizzjev-data ../fizzjev/results/latest.json jev-1.13.0
+"""
+import json
+import sys
+
+QUESTIONS = {
+    "always-number": "Always print the number",
+    "random-weighted": "Pick random with true weights",
+    "random": "Pick random",
+    "vibes": "Is this {fizz, buzz, fizzbuzz}?",
+    "vibes-game": "In FizzBuzz, is this a {Fizz, Buzz, FizzBuzz}?",
+    "vibes-rules": "Is this {fizz, buzz, fizzbuzz}? (+ divisibility rule)",
+    "divisible": "Is the number divisible by {3, 5}?",
+    "print": "What does FizzBuzz print for the number?",
+    "classic": "Given the interviewer's spec, what goes on the whiteboard?",
+    "modulo": "What is the remainder when divided by {3, 5}?",
+    "fizziness": "How fizzy is the number?",
+}
+KINDS = {"y/n": "yn", "choice": "choice", "score": "score"}
+
+src = json.load(open(sys.argv[1]))
+runs = {(r["strategy"], r["data"]): r["accuracy"] * 100 for r in src["runs"]}
+forms = src["data"]
+
+def kind(s):
+    return "base" if s["family"] == "baseline" else KINDS[s["kind"].split()[0]]
+
+def accuracy(s, form):
+    # Baselines never call the model, so one run covers every form.
+    key = (s["name"], "number" if s["family"] == "baseline" else form)
+    if key not in runs:
+        sys.exit(f"no {form} run for {s['name']} in {sys.argv[1]}")
+    return runs[key]
+
+strategies = []
+for s in sorted(src["strategies"], key=lambda s: -accuracy(s, "number")):
+    if s["name"] not in QUESTIONS:
+        sys.exit(f"no question text for strategy {s['name']}; add it to QUESTIONS")
+    row = {"name": s["name"], "kind": kind(s), "question": QUESTIONS[s["name"]]}
+    for f in forms:
+        row[f] = round(accuracy(s, f), 2)
+    strategies.append(row)
+
+out = {
+    "model": sys.argv[2] if len(sys.argv) > 2 else src["model"],
+    "range": f"{src['from']}–{src['to']}",
+    "forms": forms,
+    "kinds": [
+        {"id": "yn", "label": "y/n"},
+        {"id": "choice", "label": "choice"},
+        {"id": "score", "label": "score"},
+        {"id": "base", "label": "baseline"},
+    ],
+    "strategies": strategies,
+}
+json.dump(out, open("_data/fizzjev.json", "w"), indent=2, ensure_ascii=False)

@@ -1,0 +1,11 @@
+{%- assign b = site.data.fizzjev -%}
+<figure class="board wide">
+<div class="board-head">
+<span class="board-cap"><span class="label">{{ b.model }}</span><span class="slash">//</span>{{ b.range }}</span>
+<span class="board-forms">{% for f in b.forms %}<label><input type="radio" name="form" value="{{ f }}"{% if forloop.first %} checked{% endif %}><span>{{ f }}</span></label>{% endfor %}</span>
+</div>
+<div class="board-key">{% for k in b.kinds %}<span><i class="sw sw-{{ k.id }}"></i>{{ k.label }}</span>{% endfor %}</div>
+{% for s in b.strategies -%}
+<div class="board-row"><span class="board-name">{{ s.name }}</span><span class="board-q">{{ s.question }}</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-{{ s.kind }}" style="--number: {{ s.number }}%; --words: {{ s.words }}%; --binary: {{ s.binary }}%"></span><span class="bar-value" data-number="{{ s.number | round }}%" data-words="{{ s.words | round }}%" data-binary="{{ s.binary | round }}%" style="--number: {{ s.number }}%; --words: {{ s.words }}%; --binary: {{ s.binary }}%"></span></span></span></div>
+{% endfor -%}
+</figure>

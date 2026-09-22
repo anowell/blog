@@ -1,0 +1,117 @@
+{
+  "model": "jev-1.13.0",
+  "range": "9000–10999",
+  "forms": [
+    "number",
+    "words",
+    "binary"
+  ],
+  "kinds": [
+    {
+      "id": "yn",
+      "label": "y/n"
+    },
+    {
+      "id": "choice",
+      "label": "choice"
+    },
+    {
+      "id": "score",
+      "label": "score"
+    },
+    {
+      "id": "base",
+      "label": "baseline"
+    }
+  ],
+  "strategies": [
+    {
+      "name": "modulo",
+      "kind": "choice",
+      "question": "What is the remainder when divided by {3, 5}?",
+      "number": 98.45,
+      "words": 78.9,
+      "binary": 53.35
+    },
+    {
+      "name": "divisible",
+      "kind": "yn",
+      "question": "Is the number divisible by {3, 5}?",
+      "number": 95.0,
+      "words": 76.55,
+      "binary": 53.4
+    },
+    {
+      "name": "print",
+      "kind": "choice",
+      "question": "What does FizzBuzz print for the number?",
+      "number": 94.55,
+      "words": 70.15,
+      "binary": 53.35
+    },
+    {
+      "name": "classic",
+      "kind": "choice",
+      "question": "Given the interviewer's spec, what goes on the whiteboard?",
+      "number": 92.55,
+      "words": 84.15,
+      "binary": 53.35
+    },
+    {
+      "name": "vibes-rules",
+      "kind": "yn",
+      "question": "Is this {fizz, buzz, fizzbuzz}? (+ divisibility rule)",
+      "number": 91.85,
+      "words": 64.65,
+      "binary": 53.2
+    },
+    {
+      "name": "fizziness",
+      "kind": "score",
+      "question": "How fizzy is the number?",
+      "number": 88.95,
+      "words": 70.45,
+      "binary": 26.45
+    },
+    {
+      "name": "vibes-game",
+      "kind": "yn",
+      "question": "In FizzBuzz, is this a {Fizz, Buzz, FizzBuzz}?",
+      "number": 62.15,
+      "words": 53.45,
+      "binary": 53.35
+    },
+    {
+      "name": "vibes",
+      "kind": "yn",
+      "question": "Is this {fizz, buzz, fizzbuzz}?",
+      "number": 53.5,
+      "words": 53.35,
+      "binary": 53.35
+    },
+    {
+      "name": "always-number",
+      "kind": "base",
+      "question": "Always print the number",
+      "number": 53.35,
+      "words": 53.35,
+      "binary": 53.35
+    },
+    {
+      "name": "random-weighted",
+      "kind": "base",
+      "question": "Pick random with true weights",
+      "number": 37.75,
+      "words": 37.75,
+      "binary": 37.75
+    },
+    {
+      "name": "random",
+      "kind": "base",
+      "question": "Pick random",
+      "number": 23.55,
+      "words": 23.55,
+      "binary": 23.55
+    }
+  ]
+}

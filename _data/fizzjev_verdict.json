@@ -1,0 +1,10 @@
+{
+  "caption_label": "jev-1.13.0",
+  "caption": "score 0.63 of 3, confidence 0.62",
+  "rows": [
+    { "label": "Strong no hire", "value": 38 },
+    { "label": "No hire", "value": 62 },
+    { "label": "Hire", "value": 0 },
+    { "label": "Strong hire", "value": 0 }
+  ]
+}

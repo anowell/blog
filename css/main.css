@@ -122,8 +122,8 @@ code {
     border-radius: 2px;
 }
 
-/* Code blocks are highlighted at build time (base16-ocean.dark, inline
-   styles), so the surface stays dark ink to match. */
+/* Code blocks are highlighted client-side by highlight.js (fences with a
+   known language only); the surface is dark ink either way. */
 pre {
     font-family: var(--mono);
     font-size: 14px;
@@ -131,8 +131,8 @@ pre {
     padding: 16px 20px;
     margin: 0 0 1.4em;
     overflow: auto;
-    background: #2b303b;
-    color: #c0c5ce;
+    background: #282c34;
+    color: #abb2bf;
     border-radius: 2px;
 }
 
@@ -1038,14 +1038,20 @@ date {
 }
 
 /* One Dark tokens, trimmed to what highlight.js emits for Rust and TS. */
-.codeframe .hljs-keyword, .codeframe .hljs-meta .hljs-keyword { color: #c678dd; }
-.codeframe .hljs-string { color: #98c379; }
-.codeframe .hljs-number, .codeframe .hljs-literal, .codeframe .hljs-attr, .codeframe .hljs-variable { color: #d19a66; }
-.codeframe .hljs-title, .codeframe .hljs-title.function_ { color: #61afef; }
-.codeframe .hljs-type, .codeframe .hljs-title.class_, .codeframe .hljs-built_in, .codeframe .hljs-symbol { color: #e6c07b; }
-.codeframe .hljs-meta { color: #61afef; }
-.codeframe .hljs-comment { color: #7f8797; }
-.codeframe .hljs-punctuation { color: inherit; }
+.hljs-keyword, .hljs-meta .hljs-keyword { color: #c678dd; }
+.hljs-string { color: #98c379; }
+.hljs-number, .hljs-literal, .hljs-attr, .hljs-variable { color: #d19a66; }
+.hljs-title, .hljs-title.function_ { color: #61afef; }
+.hljs-type, .hljs-title.class_, .hljs-built_in, .hljs-symbol { color: #e6c07b; }
+.hljs-meta { color: #61afef; }
+.hljs-comment, .hljs-quote { color: #7f8797; font-style: italic; }
+.hljs-property, .hljs-attribute, .hljs-name, .hljs-selector-tag, .hljs-deletion { color: #e06c75; }
+.hljs-regexp, .hljs-addition { color: #98c379; }
+.hljs-selector-class, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo { color: #d19a66; }
+.hljs-section, .hljs-bullet { color: #61afef; }
+.hljs-params, .hljs-subst, .hljs-punctuation, .hljs-operator { color: inherit; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 600; }
 
 .artifact-pending {
     aspect-ratio: 4 / 3;
@@ -1332,4 +1338,195 @@ date {
     html, body {
         background: #fff;
     }
+}
+
+/* Prompt fences: ```claude and ```jev render as a typed prompt --------- */
+
+code.language-claude,
+code.language-jev {
+    display: block;
+    white-space: pre-wrap;
+    line-height: 1.55;
+}
+
+code.language-claude::before,
+code.language-jev::before {
+    color: var(--signal);
+    font-weight: 700;
+}
+
+code.language-claude::before { content: "claude> "; }
+code.language-jev::before { content: "jev> "; }
+
+pre.prompt {
+    margin: 6px 0 14px;
+    padding: 10px 14px;
+    background: #282c34;
+    color: #d7dae0;
+    border: 1px solid #3a3f4b;
+    border-radius: 4px;
+}
+
+/* Transcript posts (`transcript: true`): js/transcript.js groups
+   `**Speaker:**` paragraphs into turns. ------------------------------- */
+
+.post-transcript .turn {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 0 18px;
+    margin-bottom: 18px;
+    align-items: baseline;
+}
+
+.post-transcript .who {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 5px;
+    text-align: right;
+}
+
+.post-transcript .turn[data-who="me"] .who {
+    color: var(--signal);
+}
+
+.post-transcript .say {
+    min-width: 0;
+}
+
+.post-transcript .say p,
+.post-transcript .say ul {
+    margin-bottom: 0.7em;
+}
+
+.post-transcript .say > :last-child {
+    margin-bottom: 0;
+}
+
+.post-transcript .turn:not([data-who="me"]) .say {
+    color: var(--ink-soft);
+}
+
+@media (max-width: 560px) {
+    .post-transcript .turn {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .post-transcript .who {
+        text-align: left;
+        padding-top: 0;
+    }
+}
+
+/* Bars: `{% assign bars = ... %}{% include 'bars.liquid' %}` ----------- */
+
+.bars {
+    margin: 18px 0 28px;
+}
+
+.bars figcaption {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+.bars-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 12px;
+    align-items: center;
+}
+
+.bar-label {
+    font-size: 14px;
+    text-align: right;
+}
+
+.bar-track {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 14px;
+    border-left: 1px solid var(--rule);
+}
+
+.bar-fill {
+    display: block;
+    flex: none;
+    height: 100%;
+    background: var(--signal);
+    border-radius: 0 4px 4px 0;
+}
+
+.bar-value {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 560px) {
+    .bar-label {
+        font-size: 13px;
+    }
+}
+
+/* Modal: `[text](#id)` opens `<div class="modal" id="id">`; the backdrop
+   links to #! to close without scrolling. ---------------------------- */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal:target {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 26, 23, 0.55);
+}
+
+.modal-card {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    padding: 24px 28px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 12px 40px rgba(28, 26, 23, 0.25);
+}
+
+.modal-card > :last-child {
+    margin-bottom: 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-family: var(--mono);
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--ink-faint);
+}
+
+.modal-close:hover {
+    color: var(--signal);
 }

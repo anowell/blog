@@ -7,3 +7,5 @@ ignore:
   - build/*
   - bin
   - README.md
+syntax_highlight:
+  enabled: false

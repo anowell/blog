@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     {% include 'head.liquid' %}
+    {% if page.data.math %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">{% endif %}
   </head>
   <body>
     <div class="shell">
       {% assign nav = "writing" %}
       {% include 'sidenav.liquid' %}
       <main class="main">
-        <article class="post">
+        <article class="post{% if page.data.transcript %} post-transcript{% endif %}">
           <div class="post-banner" style="background-image: url({{ page.data.cover_path }});"></div>
           <header class="post-header">
             <div class="post-gutter">
@@ -37,6 +38,10 @@
         </article>
       </main>
     </div>
+    {% if page.content contains 'class="language-' %}<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>{% endif %}
+    {% if page.data.math %}<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>{% endif %}
     {% include 'foot.liquid' %}
+    {% if page.data.transcript %}<script src="/js/transcript.js"></script>{% endif %}
   </body>
 </html>

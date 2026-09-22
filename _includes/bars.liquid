@@ -1,0 +1,4 @@
+<figure class="bars">
+{%- if bars.caption %}<figcaption>{% if bars.caption_label %}<span class="label">{{ bars.caption_label }}</span><span class="slash">//</span>{% endif %}{{ bars.caption }}</figcaption>{% endif %}
+<div class="bars-grid">{% for r in bars.rows %}<span class="bar-label">{{ r.label }}</span><span class="bar-track"><span class="bar-fill" style="width: {{ r.value }}%"></span><span class="bar-value">{{ r.value }}%</span></span>{% endfor %}</div>
+</figure>
