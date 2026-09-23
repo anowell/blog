@@ -30,6 +30,7 @@
       <link rel="stylesheet" href="/css/today-puzzle.css">
     
 
+    
   </head>
   <body>
     <div class="shell">
@@ -49,6 +50,8 @@
   
   <div class="sidenav-writing">
     <div class="label"><span class="slash">//</span> Writing</div>
+    
+    <a href="/posts/fizzbuzz-jev.html">FizzBuzz in Jev</a>
     
     <a href="/posts/calendar-puzzle.html" class="active">Calendar Puzzle</a>
     
@@ -110,36 +113,33 @@
 <h2>The Board</h2>
 <p>My immediate reaction was to represent the board with an 8x8 <a href="https://en.wikipedia.org/wiki/Bitmap">bitmap</a>. Representing the board with a bitmaps allows using bitwise operations to efficiently calculate if pieces overlap. And while we only need a 7x7 grid, an 8x8 bitmap is easy to represent with a single 64-bit integer (<code>u64</code> in Rust).</p>
 <p>A few months ago, I was tinkering with <a href="https://github.com/anowell/chess-proof">a chess puzzle</a>, and I used a chess library that represented the chessboard as a <a href="https://docs.rs/chess/3.2.0/chess/struct.BitBoard.html"><code>BitBoard</code></a>. I simply used that <code>BitBoard</code> implementation with one key change: an empty chess board is represented by <code>BitBoard(0)</code> (all squares are zero) but an empty board for the Today-Is Puzzle looks like this:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">Ja Fe Ma Ap Ma Ju XX XX
-</span><span style="color:#c0c5ce;">Ju Au Se Oc No De XX XX
-</span><span style="color:#c0c5ce;">01 02 03 04 05 06 07 XX
-</span><span style="color:#c0c5ce;">08 09 10 11 12 13 14 XX
-</span><span style="color:#c0c5ce;">15 16 17 18 19 20 21 XX
-</span><span style="color:#c0c5ce;">22 23 24 25 26 27 28 XX
-</span><span style="color:#c0c5ce;">29 30 31 XX XX XX XX XX
-</span><span style="color:#c0c5ce;">XX XX XX XX XX XX XX XX
-</span></code></pre>
+<pre><code class="language-">Ja Fe Ma Ap Ma Ju XX XX
+Ju Au Se Oc No De XX XX
+01 02 03 04 05 06 07 XX
+08 09 10 11 12 13 14 XX
+15 16 17 18 19 20 21 XX
+22 23 24 25 26 27 28 XX
+29 30 31 XX XX XX XX XX
+XX XX XX XX XX XX XX XX
+</code></pre>
 <p>We represent this using <code>BitBoard(0x0303_0101_0101_1FFF)</code> - with a hex value that can be visualized in binary:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">0 0 0 0 0 0 1 1    &lt;- 0x03
-</span><span style="color:#c0c5ce;">0 0 0 0 0 0 1 1    &lt;- 0x03
-</span><span style="color:#c0c5ce;">0 0 0 0 0 0 0 1    &lt;- 0x01
-</span><span style="color:#c0c5ce;">0 0 0 0 0 0 0 1    &lt;- 0x01
-</span><span style="color:#c0c5ce;">0 0 0 0 0 0 0 1    &lt;- 0x01
-</span><span style="color:#c0c5ce;">0 0 0 0 0 0 0 1    &lt;- 0x01
-</span><span style="color:#c0c5ce;">0 0 0 1 1 1 1 1    &lt;- 0x1F
-</span><span style="color:#c0c5ce;">1 1 1 1 1 1 1 1    &lt;- 0xFF
-</span></code></pre>
+<pre><code class="language-">0 0 0 0 0 0 1 1    &lt;- 0x03
+0 0 0 0 0 0 1 1    &lt;- 0x03
+0 0 0 0 0 0 0 1    &lt;- 0x01
+0 0 0 0 0 0 0 1    &lt;- 0x01
+0 0 0 0 0 0 0 1    &lt;- 0x01
+0 0 0 0 0 0 0 1    &lt;- 0x01
+0 0 0 1 1 1 1 1    &lt;- 0x1F
+1 1 1 1 1 1 1 1    &lt;- 0xFF
+</code></pre>
 <p>Each <code>0</code> is an empty square, and each <code>1</code> is a square where you cannot place anything.</p>
 <h2>The Pieces</h2>
 <p>Chess pieces aren't going to work here since a chess piece only ever occupies one square. Each of our shapes fits in a 4x4 grid, so I created a smaller bitmap type (<code>BitPiece(u16)</code>) as the data structure for a piece. By convention, I decided I would enforce that every piece is always in the LSB (least significant bits) of the data structure (i.e. the bottom-right when visualized in a 4x4 grid). Then for each shape piece, I hard-coded one possible variation. I chose <code>0x0313</code> for the pink <code>C</code> or <code>U</code> shaped piece:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">0 0 0 0    &lt;- 0x0
-</span><span style="color:#c0c5ce;">0 0 1 1    &lt;- 0x3
-</span><span style="color:#c0c5ce;">0 0 0 1    &lt;- 0x1
-</span><span style="color:#c0c5ce;">0 0 1 1    &lt;- 0x3
-</span></code></pre>
+<pre><code class="language-">0 0 0 0    &lt;- 0x0
+0 0 1 1    &lt;- 0x3
+0 0 0 1    &lt;- 0x1
+0 0 1 1    &lt;- 0x3
+</code></pre>
 <p>You can see all the pieces defined <a href="https://github.com/anowell/today-puzzle/blob/c765a440de6d278e807c64bbfaf05cc1579c0f39/src/piece.rs#L3-L10">here</a>.</p>
 <p>There are a few critical bits of functionality needed for our pieces.</p>
 <ul>
@@ -170,24 +170,23 @@
 <p>Initially the list will grow very fast, but as the board has more pieces, there will be fewer legal placements.</p>
 <h2>Visualizing Solutions</h2>
 <p>I wrapped this all up in a little program called <code>today-is</code> which visualizes each of the shapes with a different letter from <code>A-H</code>:</p>
-<pre style="background-color:#2b303b;">
-<code><span style="color:#c0c5ce;">$ today-is
-</span><span style="color:#c0c5ce;">**** 12-01 ****
-</span><span style="color:#c0c5ce;">E E E E B B X X
-</span><span style="color:#c0c5ce;">E C C C B X X X
-</span><span style="color:#c0c5ce;">X D D C B B G X
-</span><span style="color:#c0c5ce;">A A D C H G G X
-</span><span style="color:#c0c5ce;">A A D D H H G X
-</span><span style="color:#c0c5ce;">A A F F H H G X
-</span><span style="color:#c0c5ce;">F F F X X X X X
-</span><span style="color:#c0c5ce;">X X X X X X X X
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">$ today-is --print count
-</span><span style="color:#c0c5ce;">12-01 has 26 solutions
-</span><span style="color:#c0c5ce;">
-</span><span style="color:#c0c5ce;">$ today-is --date 12-25 --print count
-</span><span style="color:#c0c5ce;">12-25 has 92 solutions
-</span></code></pre>
+<pre><code class="language-shell">$ today-is
+**** 12-01 ****
+E E E E B B X X
+E C C C B X X X
+X D D C B B G X
+A A D C H G G X
+A A D D H H G X
+A A F F H H G X
+F F F X X X X X
+X X X X X X X X
+
+$ today-is --print count
+12-01 has 26 solutions
+
+$ today-is --date 12-25 --print count
+12-25 has 92 solutions
+</code></pre>
 <p>Every day of the year has <a href="https://github.com/anowell/today-puzzle/blob/67c7e317ee480430495427e3a3e49f76f9be8d94/count_solutions.txt">multiple solutions</a>:</p>
 <ul>
 <li>Oct 6 has the fewest unique solutions: 7</li>
@@ -345,7 +344,9 @@
         </article>
       </main>
     </div>
-        <script src="/js/main.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+        <script defer src="/js/main.js"></script>
     <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -356,5 +357,6 @@
 </script>
 
 
+    
   </body>
 </html>

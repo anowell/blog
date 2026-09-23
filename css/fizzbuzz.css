@@ -1,0 +1,187 @@
+/* Leaderboard; the data form comes from :has() on the radios, or from the
+   data-form attribute main.js sets. Kept as separate rules: a browser without
+   :has() drops any selector list containing it. */
+.board {
+  margin: 28px 0 32px;
+  padding: 0;
+}
+
+.board-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 16px;
+  margin-bottom: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.board-cap {
+  display: inline-flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.board-forms {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.board-forms label {
+  cursor: pointer;
+}
+
+.board-forms input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.board-forms span {
+  display: block;
+  padding: 3px 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.board-forms label + label span {
+  border-left: 1px solid var(--rule);
+}
+
+.board-forms input:checked + span {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.board-forms input:focus-visible + span {
+  outline: 2px solid var(--signal);
+  outline-offset: -2px;
+}
+
+.board-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.board-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sw {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.sw-yn { background: #d4481c; }
+.sw-choice { background: #1c78a8; }
+.sw-score { background: #b8901f; }
+.sw-base { background: var(--ink-faint); }
+
+.board-row {
+  display: grid;
+  grid-template-columns: 112px 1fr 200px;
+  gap: 0 12px;
+  align-items: center;
+  padding: 5px 0;
+  border-top: 1px solid var(--paper-deep);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.board-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.board-q {
+  color: var(--ink-soft);
+}
+
+.board-row .bar-track {
+  height: 10px;
+}
+
+.board-row .bar-area {
+  position: relative;
+  display: block;
+  width: calc(100% - 40px);
+  height: 100%;
+}
+
+.board-row .bar-fill {
+  width: var(--number);
+  transition: width 0.35s ease;
+}
+
+.board-row .bar-value {
+  position: absolute;
+  top: 0;
+  left: calc(var(--number) + 6px);
+  line-height: 10px;
+  white-space: nowrap;
+  transition: left 0.35s ease;
+}
+
+.board-row .bar-value::after {
+  content: attr(data-number);
+}
+
+.board:has(input[value="words"]:checked) .bar-fill { width: var(--words); }
+.board:has(input[value="words"]:checked) .bar-value { left: calc(var(--words) + 6px); }
+.board:has(input[value="words"]:checked) .bar-value::after { content: attr(data-words); }
+
+.board[data-form="words"] .bar-fill { width: var(--words); }
+.board[data-form="words"] .bar-value { left: calc(var(--words) + 6px); }
+.board[data-form="words"] .bar-value::after { content: attr(data-words); }
+
+.board:has(input[value="binary"]:checked) .bar-fill { width: var(--binary); }
+.board:has(input[value="binary"]:checked) .bar-value { left: calc(var(--binary) + 6px); }
+.board:has(input[value="binary"]:checked) .bar-value::after { content: attr(data-binary); }
+
+.board[data-form="binary"] .bar-fill { width: var(--binary); }
+.board[data-form="binary"] .bar-value { left: calc(var(--binary) + 6px); }
+.board[data-form="binary"] .bar-value::after { content: attr(data-binary); }
+
+@media (max-width: 700px) {
+  .board-row {
+    grid-template-columns: 112px 1fr;
+    gap: 3px 12px;
+  }
+
+  .board-row .bar-track {
+    grid-column: 1 / -1;
+  }
+}
+
+.math {
+  margin: 0 0 1.1em;
+  padding: 6px 14px;
+  background: var(--paper-deep);
+  overflow-x: auto;
+}
+
+.math .katex-display {
+  margin: 6px 0;
+}
+
+.math .katex-display > .katex {
+  text-align: left;
+  font-size: 1.05em;
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+      <title>FizzBuzz in Jev</title>
+    
+    <meta name="author" content="Anthony Nowell">
+    <meta name="description" content="">
+    
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="http://anowell.com/posts/fizzbuzz-jev.html">
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="FizzBuzz in Jev" />
+      <meta property="og:image" content="http://anowell.com/images/fizzbuzz/fizzbuzz-og.jpg" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@atnowell" />
+      <meta name="twitter:title" content="FizzBuzz in Jev" />
+      <meta name="twitter:description" content="" />
+      <meta name="twitter:image" content="http://anowell.com/images/fizzbuzz/fizzbuzz-og.jpg" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="/css/fizzbuzz.css">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css">
+  </head>
+  <body>
+    <div class="shell">
+      
+      <aside class="sidenav">
+  
+  <a class="sidenav-name" href="/"><span>Anthony</span> <span>Nowell</span></a>
+  <div class="rule rule-heavy rule-name"></div>
+
+  <nav class="sidenav-links">
+    <a href="/portfolio">Work</a>
+    <a href="/projects">Projects</a>
+    <a href="/principles">Principles</a>
+    <a href="/writing" class="active">Writing</a>
+  </nav>
+
+  
+  <div class="sidenav-writing">
+    <div class="label"><span class="slash">//</span> Writing</div>
+    
+    <a href="/posts/fizzbuzz-jev.html" class="active">FizzBuzz in Jev</a>
+    
+    <a href="/posts/calendar-puzzle.html">Calendar Puzzle</a>
+    
+    <a href="/posts/hack-fastpass.html">Hacking Disney World FastPass+</a>
+    
+    <a href="/posts/why-rust.html">Why Rust?</a>
+    
+    <a href="/posts/deep-style-wall.html">Deep Style Wall</a>
+    
+  </div>
+  
+
+  <div class="sidenav-foot">
+    <div class="rule rule-short"></div>
+    <div class="meta">Seattle, WA</div>
+    <div class="meta">Updated Sep 2026</div>
+    <nav class="social">
+  <a href="https://github.com/anowell" title="GitHub"><i class="fa fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/anthonynowell" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+  <a href="https://twitter.com/atnowell" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a href="mailto:anowell@gmail.com" title="Email"><i class="fa fa-envelope-o"></i></a>
+</nav>
+
+  </div>
+</aside>
+
+      <main class="main">
+        <article class="post post-transcript">
+          <div class="post-banner" style="background-image: url(/images/covers/fizzbuzz.jpg);"></div>
+          <header class="post-header">
+            <div class="post-gutter">
+              <div class="mono post-date">Sep 23<br>2026</div>
+              <div class="rule rule-short"></div>
+            </div>
+            <div class="post-title">
+              <h1>FizzBuzz in Jev</h1>
+              <div class="rule rule-signal"></div>
+              <p class="lede"></p>
+            </div>
+          </header>
+          <div class="post-body">
+            <p><em>Inspired by the classic <a href="https://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow/">Fizz Buzz in Tensorflow</a>.</em></p>
+<p><strong>Interviewer:</strong> Let's implement fizzbuzz.</p>
+<p><strong>Me:</strong> Great. Let's spin up Claude.</p>
+<p><strong>Interviewer:</strong> For fizzbuzz?</p>
+<p><strong>Me:</strong> Of course. It's 2026, so like availability, I measure LOC written by agents in <a href="https://uptimeobserver.com/understanding-availability-comparing-nines-for-business-excellence/">"nines"</a>. I'm operating near 4 nines, so unless you're hoping for an implementation that exceeds 10k LOC, I won't be writing any of it.</p>
+<p>Let's start with evals…</p>
+<p><strong>Interviewer:</strong> What exactly are you evaling?</p>
+<p><strong>Me:</strong> Well, for the sake of speed and trendiness, let's just pick Jev, but with more time we could generalize this across other models.</p>
+<p><strong>Interviewer:</strong> Perhaps we should just focus on code?</p>
+<p><strong>Me:</strong> Agreed.</p>
+<pre><code class="language-claude">Spin me up a rust binary to do evals for fizzbuzz…
+</code></pre>
+<p><strong>Interviewer:</strong> Rust?</p>
+<p><strong>Me:</strong> Lean into the meme.</p>
+<pre><code class="language-claude">Read the Jev API docs. We&#39;ll wire up several fizzbuzz strategies using Jev.
+
+As a baseline, let&#39;s use some random strategies: pure random &amp; weighted random based on expected distribution of fizz/buzz/etc. And a naive strat that just picks the number.
+</code></pre>
+<p><strong>Interviewer:</strong> Random strategies?</p>
+<p><strong>Me:</strong> Mostly vanity - to show that we're better than random. Honestly, we could get these numbers with <a href="#simple-math">simple math</a>, but it won't be our bottleneck, so let's not optimize prematurely.</p>
+<pre><code class="language-claude">For our eval data, use variants to represent it numerically, as words, and as a binary array.
+</code></pre>
+<p><strong>Interviewer:</strong> Is the binary array necessary?</p>
+<p><strong>Me:</strong> I dunno yet. We'll know shortly.</p>
+<pre><code class="language-claude">Let&#39;s explore strategies to try:
+- Minimal &quot;Is this fizz/buzz/fizzbuzz?&quot; questions
+- Qualify that this is the FizzBuzz game in each question
+- Add the divisibility rule to each question
+- Just ask if the number is divisible by 3 or 5
+</code></pre>
+<p><strong>Interviewer:</strong> Do we really need 4 strategies for fizzbuzz?</p>
+<p><strong>Me:</strong> We're at 7 if you count the baselines, but let's add a few more:</p>
+<pre><code class="language-claude">- Choice: what does FizzBuzz print for the number
+- Given the classic interview problem description, what should be printed for the number
+</code></pre>
+<p>And of course, let's outsource the math as explicitly advised against:</p>
+<pre><code class="language-claude">- What is the remainder when divided by {3,5}?
+</code></pre>
+<p>And let's abuse scoring for a strategy?</p>
+<pre><code class="language-claude">- How fizzbuzzy is the number? (for some convoluted fizzy-scale)
+</code></pre>
+<p><strong>Interviewer:</strong> Could we start implementing a solution?</p>
+<p><strong>Me:</strong> After we eval these strategies.</p>
+<pre><code class="language-claude">Write the eval function - standard fizzbuzz mod-branching.
+</code></pre>
+<p><strong>Interviewer:</strong> Why don't you just write that function for me?</p>
+<p><strong>Me:</strong> We could spend 20 min talking about ownership and lifetimes, but honestly, Chris Morgan already wrote a great (albeit outdated) post years ago about <a href="https://chrismorgan.info/blog/rust-fizzbuzz/">why your first FizzBuzz implementation might not work in Rust</a>.</p>
+<p>So let's stay focused and get this running.</p>
+<pre><code class="language-claude">Probe the API for a stable, unthrottled concurrency. Then run our evals for these strategies against each of our dataset variations over the dataset range 9000-10999.
+</code></pre>
+<p><strong>Interviewer:</strong> 9000-10999?</p>
+<p><strong>Me:</strong> Too likely that 1-100 is in the training set. Also, instinctively, I want to vary the importance of the first digit. It's a range large enough to be interesting, and small enough to get quick answers.</p>
+<p>And the results are rolling in...</p>
+<figure class="board wide">
+<div class="board-head">
+<span class="board-cap"><span class="label">jev-1.13.0</span><span class="slash">//</span>9000–10999</span>
+<span class="board-forms"><label><input type="radio" name="form" value="number" checked><span>number</span></label><label><input type="radio" name="form" value="words"><span>words</span></label><label><input type="radio" name="form" value="binary"><span>binary</span></label></span>
+</div>
+<div class="board-key"><span><i class="sw sw-yn"></i>y/n</span><span><i class="sw sw-choice"></i>choice</span><span><i class="sw sw-score"></i>score</span><span><i class="sw sw-base"></i>baseline</span></div>
+<div class="board-row"><span class="board-name">modulo</span><span class="board-q">What is the remainder when divided by {3, 5}?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-choice" style="--number: 98.45%; --words: 78.9%; --binary: 53.35%"></span><span class="bar-value" data-number="98%" data-words="79%" data-binary="53%" style="--number: 98.45%; --words: 78.9%; --binary: 53.35%"></span></span></span></div>
+<div class="board-row"><span class="board-name">divisible</span><span class="board-q">Is the number divisible by {3, 5}?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-yn" style="--number: 95%; --words: 76.55%; --binary: 53.4%"></span><span class="bar-value" data-number="95%" data-words="77%" data-binary="53%" style="--number: 95%; --words: 76.55%; --binary: 53.4%"></span></span></span></div>
+<div class="board-row"><span class="board-name">print</span><span class="board-q">What does FizzBuzz print for the number?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-choice" style="--number: 94.55%; --words: 70.15%; --binary: 53.35%"></span><span class="bar-value" data-number="95%" data-words="70%" data-binary="53%" style="--number: 94.55%; --words: 70.15%; --binary: 53.35%"></span></span></span></div>
+<div class="board-row"><span class="board-name">classic</span><span class="board-q">Given the interviewer's spec, what goes on the whiteboard?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-choice" style="--number: 92.55%; --words: 84.15%; --binary: 53.35%"></span><span class="bar-value" data-number="93%" data-words="84%" data-binary="53%" style="--number: 92.55%; --words: 84.15%; --binary: 53.35%"></span></span></span></div>
+<div class="board-row"><span class="board-name">vibes-rules</span><span class="board-q">Is this {fizz, buzz, fizzbuzz}? (+ divisibility rule)</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-yn" style="--number: 91.85%; --words: 64.65%; --binary: 53.2%"></span><span class="bar-value" data-number="92%" data-words="65%" data-binary="53%" style="--number: 91.85%; --words: 64.65%; --binary: 53.2%"></span></span></span></div>
+<div class="board-row"><span class="board-name">fizziness</span><span class="board-q">How fizzy is the number?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-score" style="--number: 88.95%; --words: 70.45%; --binary: 26.45%"></span><span class="bar-value" data-number="89%" data-words="70%" data-binary="26%" style="--number: 88.95%; --words: 70.45%; --binary: 26.45%"></span></span></span></div>
+<div class="board-row"><span class="board-name">vibes-game</span><span class="board-q">In FizzBuzz, is this a {Fizz, Buzz, FizzBuzz}?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-yn" style="--number: 62.15%; --words: 53.45%; --binary: 53.35%"></span><span class="bar-value" data-number="62%" data-words="53%" data-binary="53%" style="--number: 62.15%; --words: 53.45%; --binary: 53.35%"></span></span></span></div>
+<div class="board-row"><span class="board-name">vibes</span><span class="board-q">Is this {fizz, buzz, fizzbuzz}?</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-yn" style="--number: 53.5%; --words: 53.35%; --binary: 53.35%"></span><span class="bar-value" data-number="54%" data-words="53%" data-binary="53%" style="--number: 53.5%; --words: 53.35%; --binary: 53.35%"></span></span></span></div>
+<div class="board-row"><span class="board-name">always-number</span><span class="board-q">Always print the number</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-base" style="--number: 53.35%; --words: 53.35%; --binary: 53.35%"></span><span class="bar-value" data-number="53%" data-words="53%" data-binary="53%" style="--number: 53.35%; --words: 53.35%; --binary: 53.35%"></span></span></span></div>
+<div class="board-row"><span class="board-name">random-weighted</span><span class="board-q">Pick random with true weights</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-base" style="--number: 37.75%; --words: 37.75%; --binary: 37.75%"></span><span class="bar-value" data-number="38%" data-words="38%" data-binary="38%" style="--number: 37.75%; --words: 37.75%; --binary: 37.75%"></span></span></span></div>
+<div class="board-row"><span class="board-name">random</span><span class="board-q">Pick random</span><span class="bar-track"><span class="bar-area"><span class="bar-fill sw-base" style="--number: 23.55%; --words: 23.55%; --binary: 23.55%"></span><span class="bar-value" data-number="24%" data-words="24%" data-binary="24%" style="--number: 23.55%; --words: 23.55%; --binary: 23.55%"></span></span></span></div>
+</figure>
+<p><strong>Interviewer:</strong> So what did you conclude?</p>
+<p><strong>Me:</strong> I'm disappointed that model math won. You were right to doubt the binary array. But the fizziness scale is pretty epic!</p>
+<p><strong>Interviewer:</strong> We'll be in touch.</p>
+<hr />
+<h2>Debrief</h2>
+<pre><code class="language-jev">Based on the interview transcript, how does the interviewer vote on the candidate?
+</code></pre>
+<figure class="bars"><figcaption><span class="label">jev-1.13.0</span><span class="slash">//</span>score 0.63 of 3, confidence 0.62</figcaption>
+<div class="bars-grid"><span class="bar-label">Strong no hire</span><span class="bar-track"><span class="bar-fill" style="width: 38%"></span><span class="bar-value">38%</span></span><span class="bar-label">No hire</span><span class="bar-track"><span class="bar-fill" style="width: 62%"></span><span class="bar-value">62%</span></span><span class="bar-label">Hire</span><span class="bar-track"><span class="bar-fill" style="width: 0%"></span><span class="bar-value">0%</span></span><span class="bar-label">Strong hire</span><span class="bar-track"><span class="bar-fill" style="width: 0%"></span><span class="bar-value">0%</span></span></div>
+</figure>
+<p>Devastating. No more tokens for you, Jev.</p>
+<p>You can find the <a href="https://github.com/anowell/fizzjev">FizzJev slop grenade on GitHub</a>.</p>
+<div class="modal" id="simple-math">
+<a class="modal-backdrop" href="#!"></a>
+<div class="modal-card">
+<a class="modal-close" href="#!">×</a>
+<p><strong>Math</strong></p>
+<p>Over any run of 15 numbers:</p>
+<div class="math">
+<p>$$P(\text{Fizz}) = P(3 \cap 5^c) = \tfrac{1}{3} \cdot \tfrac{4}{5} = \tfrac{4}{15} \approx 0.267$$
+$$P(\text{Buzz}) = P(3^c \cap 5) = \tfrac{2}{3} \cdot \tfrac{1}{5} = \tfrac{2}{15} \approx 0.133$$
+$$P(\text{FizzBuzz}) = P(3 \cap 5) = \tfrac{1}{3} \cdot \tfrac{1}{5} = \tfrac{1}{15} \approx 0.067$$
+$$P(\text{number}) = P(3^c \cap 5^c) = \tfrac{2}{3} \cdot \tfrac{4}{5} = \tfrac{8}{15} \approx 0.533$$</p>
+</div>
+<p>A <strong>random</strong> draw gets us ¼ odds. A <strong>random-weighted</strong> draw using the true independent odds yields:</p>
+<div class="math">
+<p>$$P(\text{correct}) = P(\text{Fizz})^2 + P(\text{Buzz})^2 + P(\text{FizzBuzz})^2 + P(\text{number})^2$$
+$$= \tfrac{17}{45} \approx 0.378$$</p>
+</div>
+<p>Sadly, still not better than an <strong>always-number</strong> draw at ≈ 0.533.</p>
+</div>
+</div>
+
+          </div>
+          <footer class="post-foot">
+            <div class="rule"></div>
+            <p class="mono">
+              Written by Anthony Nowell
+              <span class="slash">//</span>
+              <a href="https://twitter.com/share?text=FizzBuzz in Jev via @atnowell&url=http://anowell.com/posts/fizzbuzz-jev.html" target="_blank">Share</a>
+              <span class="slash">//</span>
+              <a href="mailto:anowell@gmail.com?subject=FizzBuzz in Jev">Reply</a>
+            </p>
+          </footer>
+        </article>
+      </main>
+    </div>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js"></script>
+        <script defer src="/js/main.js"></script>
+    <script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-89616131-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+
+    <script src="/js/transcript.js"></script>
+  </body>
+</html>

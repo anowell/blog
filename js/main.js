@@ -45,3 +45,41 @@ ready(function() {
 });
 
 
+
+var PROMPT_LANGS = ['claude', 'jev'];
+
+function highlightCode() {
+    Array.prototype.forEach.call(document.querySelectorAll('.post-body pre code[class*="language-"]'), function(el) {
+        var lang = (/language-(\S+)/.exec(el.className) || [])[1];
+        if (PROMPT_LANGS.indexOf(lang) >= 0) {
+            el.parentNode.classList.add('prompt');
+        } else if (window.hljs && lang && hljs.getLanguage(lang)) {
+            hljs.highlightElement(el);
+        }
+    });
+}
+
+// The board's radio group mirrors its choice as a data-<name> attribute on
+// the board, for browsers without :has().
+function wireSwitches() {
+    Array.prototype.forEach.call(document.querySelectorAll('.board input[type="radio"]'), function(input) {
+        input.addEventListener('change', function() {
+            input.closest('.board').setAttribute('data-' + input.name, input.value);
+        });
+    });
+}
+
+function renderMath() {
+    var body = document.querySelector('.post-body');
+    if (!window.renderMathInElement || !body) return;
+    renderMathInElement(body, {
+        delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+        ]
+    });
+}
+
+ready(highlightCode);
+ready(wireSwitches);
+ready(renderMath);
