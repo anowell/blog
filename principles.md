@@ -32,7 +32,7 @@ _There is no talent shortage; there is a shortage of learning organizations inve
 
 ## Communicate
 
-_If you're thinking without writing, you only think you're thinking._ -Leslie Lampert
+_If you're thinking without writing, you only think you're thinking._ -Leslie Lamport
 
 ### Radical Candor
 
@@ -43,7 +43,7 @@ _If you're thinking without writing, you only think you're thinking._ -Leslie La
 
 - Have enough passion to care and enough humility to embrace competing opinions.
 - Pick your battles judiciously, but be willing to _stake your reputation_ on the battles you do pick.
-- Weakly held opinions are overturned by better reasoning, not louder voices nor squeaky wheels.
+- Weakly held opinions are overturned by better reasoning, not louder voices or squeaky wheels.
 
 ### Persuade through Listening
 
@@ -61,7 +61,7 @@ _Great execution on a mediocre idea beats mediocre execution of a great idea._
 
 ### Empower People; Expect Accountability
 
-- Teams have far more aggregate capacity then their leaders; leaders must be multipliers, not "plus ones".
+- Teams have far more aggregate capacity than their leaders; leaders must be multipliers, not "plus ones".
 - Empowering people starts with **individual competence and organizational clarity**.
 - With greater empowerment comes greater responsibility and accountability.
 - Leaders give credit and take blame - "buck stops here" mentality.
@@ -86,6 +86,6 @@ _Great execution on a mediocre idea beats mediocre execution of a great idea._
 
 - Win together: avoid zero-sum thinking with peers and partners.
 - Compete to win: no competitor should beat us in our mission
-- Never compromise on ethics. It may be harder to win ethically than to win "at any cost", but that will neither be a justification for compromising on ethics nor for not winning.
+- Never compromise on ethics. It may be harder to win ethically than to win "at any cost", but that will neither justify compromising on ethics nor losing.
 
 
