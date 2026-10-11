@@ -23,8 +23,8 @@ Adaptable technical and organizational engineering leader in agent, platform, an
 
 **Founding Engineer** <date>Feb 2025 - Present</date>
 
-- Designed eval harness and agent that replaced core human-in-the-loop business strategy
-- Delivered whitelabel assistant capability that drove significant portion of revenue growth
+- Designed agent harnesses, evals, and auditing systems central to product strategy
+- Delivered whitelabel assistant capability to drive revenue growth
 
 ---
 
