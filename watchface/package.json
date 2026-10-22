@@ -1,0 +1,12 @@
+{
+  "name": "solarclock-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "face": "bun gen/face.mjs",
+    "preview": "bun gen/face.mjs && bun gen/preview.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.63.0"
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="watch_face_name">Solar SI</string>
+    <string name="showSi_label">Solar SI digital</string>
+    <string name="showCivil_label">Civil digital</string>
+    <string name="showZone_label">Time zone</string>
+    <string name="longitude_label">Longitude</string>
+    <string name="top_left_label">Top left</string>
+    <string name="top_right_label">Top right</string>
+    <string name="bottom_left_label">Bottom left</string>
+    <string name="bottom_right_label">Bottom right</string>
+</resources>

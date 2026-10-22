@@ -1,0 +1,285 @@
+/* Terrestrial spacetime clocks (js/si-clock.js). Same paper, ink and one
+   signal color as the rest of the blog; signal marks the fast digits. */
+.sc {
+  margin: 36px 0 40px;
+}
+
+.sc-clock {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.sc-now .sc-clock {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.sc-rim {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.sc-mark {
+  stroke-linecap: butt;
+}
+
+.sc-mark-minor {
+  stroke: var(--ink-faint);
+  stroke-width: 0.6;
+}
+
+.sc-mark-mid {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+}
+
+.sc-mark-major {
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+
+.sc-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.sc-civil .sc-num {
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+.sc-readout {
+  margin-top: 12px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.sc sup {
+  position: relative;
+  top: -0.45em;
+  margin-left: 1px;
+  font-size: 0.8em;
+  line-height: 0;
+  vertical-align: 0;
+  color: var(--signal);
+}
+
+.sc-readout sup {
+  top: -0.7em;
+  font-size: 0.55em;
+}
+
+.sc-col .sc-readout {
+  font-size: 22px;
+}
+
+.sc-hand line {
+  stroke: var(--ink);
+  stroke-linecap: round;
+}
+
+.sc-hand-slow line {
+  stroke-width: 6;
+}
+
+.sc-hand-mid line {
+  stroke-width: 3;
+}
+
+.sc-cap {
+  fill: var(--ink);
+}
+
+.sc-pin {
+  fill: var(--signal);
+}
+
+/* Fast indicator styles; the svg's data-fast picks one. */
+.sc-fast {
+  display: none;
+}
+
+.sc-clock[data-fast="hand"] .sc-fast-hand,
+.sc-clock[data-fast="pip"] .sc-fast-pip,
+.sc-clock[data-fast="mark"] .sc-fast-mark {
+  display: inline;
+}
+
+.sc-fast-hand line {
+  stroke: var(--signal);
+  stroke-width: 1;
+}
+
+.sc-fast-hand circle,
+.sc-fast-pip path {
+  fill: var(--signal);
+}
+
+.sc-fast-mark line {
+  stroke: var(--signal);
+  stroke-width: 2.4;
+}
+
+/* Captions and controls */
+.sc-meta {
+  margin-top: 10px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+
+.sc button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sc-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--mono);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+
+.sc-link:hover:not(:disabled) {
+  text-decoration-color: var(--signal);
+}
+
+.sc-link:disabled {
+  cursor: default;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+
+.sc-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.sc-col .sc-clock {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.sc-title {
+  margin: 2px 0 12px;
+  text-align: center;
+}
+
+.sc-steps {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 6px;
+}
+
+.sc-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.sc-step button {
+  padding: 5px 8px;
+  border: 0;
+  background: none;
+  color: var(--ink-soft);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sc-step button:hover {
+  color: var(--signal);
+}
+
+.sc-step-label {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  white-space: nowrap;
+}
+
+.sc-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.sc-modes {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sc-modes button {
+  padding: 4px 10px;
+  border: 0;
+  background: none;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.sc-modes button + button {
+  border-left: 1px solid var(--rule);
+}
+
+.sc-modes button[aria-checked="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.sc button:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: -2px;
+}
+
+.sc-delta {
+  min-width: 15em;
+  text-align: center;
+  white-space: pre;
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .sc-pair {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .sc-col .sc-clock {
+    max-width: 260px;
+  }
+}

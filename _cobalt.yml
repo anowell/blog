@@ -6,6 +6,7 @@ ignore:
   - .git/*
   - build/*
   - bin
+  - watchface
   - README.md
 syntax_highlight:
   enabled: false

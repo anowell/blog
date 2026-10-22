@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solar Longitude</string>
+    <string name="data_source_name">Longitude (solar time)</string>
+    <string name="offset_source_name">Solar offset</string>
+</resources>
